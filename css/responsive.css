@@ -3,6 +3,7 @@
    --------------------------------------------------------------------------
    - No horizontal scrolling
    - Mobile/tablet search input + button stay on the same row
+   - Hero CTA buttons stay SIDE BY SIDE on mobile
    - Responsive navigation
    - Responsive cards, maps, creator section, modal, gallery
    ========================================================================== */
@@ -25,6 +26,14 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+
+/* Make all elements easier to control on small screens */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 
@@ -184,6 +193,27 @@ body {
 
 
   /* ========================================================================
+     HERO CTA BUTTONS — TABLET
+     ======================================================================== */
+
+  .hero__ctas {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: .75rem;
+    width: 100%;
+  }
+
+
+  .hero__ctas .eb-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+
+  /* ========================================================================
      SEARCH — TABLET
      ------------------------------------------------------------------------
      Input + Search button stay on the same row
@@ -254,8 +284,51 @@ body {
   }
 
 
+  /* ========================================================================
+     HERO BUTTONS — MOBILE
+     ------------------------------------------------------------------------
+     Explore Now + View Map ALWAYS stay SIDE BY SIDE
+     ======================================================================== */
+
+  .hero__ctas {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: stretch;
+
+    justify-content: stretch;
+
+    gap: .65rem;
+
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
   .hero__ctas .eb-btn {
-    flex: 1 1 140px;
+    flex: 1 1 0;
+
+    width: 0;
+
+    min-width: 0;
+
+    max-width: none;
+
+    min-height: 48px;
+
+    padding-left: .65rem;
+
+    padding-right: .65rem;
+
+    font-size: .9rem;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
   }
 
 
@@ -281,6 +354,8 @@ body {
     gap: .5rem;
 
     width: 100%;
+
+    min-width: 0;
   }
 
 
@@ -313,6 +388,7 @@ body {
     min-height: 44px;
 
     padding-left: .8rem;
+
     padding-right: .8rem;
 
     white-space: nowrap;
@@ -323,6 +399,7 @@ body {
 
   .search-card__chips {
     max-width: 100%;
+
     overflow-x: auto;
 
     scrollbar-width: thin;
@@ -413,6 +490,7 @@ body {
 
   #toast-host {
     left: 1rem;
+
     right: 1rem;
 
     max-width: none;
@@ -431,6 +509,7 @@ body {
   .gallery__nav,
   .lightbox__btn {
     min-width: 44px;
+
     min-height: 44px;
   }
 }
@@ -452,21 +531,59 @@ body {
   }
 
 
-  .hero__ctas .eb-btn {
-    flex-basis: 100%;
+  /* ========================================================================
+     IMPORTANT FIX
+     ------------------------------------------------------------------------
+     DO NOT use:
+         flex-basis: 100%;
+     
+     Because that makes Explore Now and View Map go to separate rows.
+     
+     Both buttons remain SIDE BY SIDE.
+     ======================================================================== */
+
+  .hero__ctas {
+    display: flex;
+
+    flex-direction: row;
+
+    gap: .5rem;
+
+    width: 100%;
+
+    min-width: 0;
   }
 
+
+  .hero__ctas .eb-btn {
+    flex: 1 1 0;
+
+    width: 0;
+
+    min-width: 0;
+
+    min-height: 46px;
+
+    padding-left: .45rem;
+
+    padding-right: .45rem;
+
+    font-size: .82rem;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+
+  /* ---------- Search ---------- */
 
   .search-card h2 {
     font-size: 1.1rem;
   }
 
-
-  /* ========================================================================
-     VERY SMALL SEARCH
-     ------------------------------------------------------------------------
-     Input + button STILL remain side by side.
-     ======================================================================== */
 
   .search-card__row {
     gap: .4rem;
@@ -481,6 +598,7 @@ body {
     font-size: .9rem;
 
     padding-left: .7rem;
+
     padding-right: .7rem;
   }
 
@@ -489,6 +607,7 @@ body {
     min-width: 78px;
 
     padding-left: .55rem;
+
     padding-right: .55rem;
 
     font-size: .85rem;
@@ -525,6 +644,61 @@ body {
 
 
 /* ==========================================================================
+   VERY SMALL PHONES
+   ========================================================================== */
+
+@media (max-width: 360px) {
+
+  /* Hero buttons */
+
+  .hero__ctas {
+    gap: .4rem;
+  }
+
+
+  .hero__ctas .eb-btn {
+    min-height: 44px;
+
+    padding-left: .35rem;
+
+    padding-right: .35rem;
+
+    font-size: .76rem;
+  }
+
+
+  /* Search */
+
+  .search-card {
+    padding: .85rem;
+  }
+
+
+  .search-card__row {
+    gap: .35rem;
+  }
+
+
+  .search-card__row .eb-btn {
+    min-width: 72px;
+
+    padding-left: .45rem;
+
+    padding-right: .45rem;
+
+    font-size: .8rem;
+  }
+
+
+  .search-card__row input,
+  .search-card__row input[type="search"],
+  .search-card__row input[type="text"] {
+    font-size: .85rem;
+  }
+}
+
+
+/* ==========================================================================
    SHORT / LANDSCAPE PHONES
    ========================================================================== */
 
@@ -547,6 +721,24 @@ body {
 
   .nav-menu {
     max-height: calc(100vh - var(--nav-h));
+  }
+
+
+  /* Keep hero buttons side by side */
+
+  .hero__ctas {
+    display: flex;
+
+    flex-direction: row;
+
+    gap: .6rem;
+  }
+
+
+  .hero__ctas .eb-btn {
+    flex: 1 1 0;
+
+    min-width: 0;
   }
 }
 
