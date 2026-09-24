@@ -136,7 +136,7 @@
         sec('Best time to visit', '<p><strong>' + U.esc(s.bestTime) + '.</strong> ' + U.esc(s.bestTimeNote) + '</p>') +
         sec('Visiting information', '<table><tr><td>Opening / closing</td><td>' + U.esc(s.hours || 'Not listed') + '</td></tr><tr><td>Entry fee</td><td>' + U.esc(s.entryFee || 'Not listed') + '</td></tr></table>') +
         sec('How to get there', '<table><tr><td>Distance</td><td>' + U.esc(g.distance) + '</td></tr><tr><td>Travel time</td><td>' + U.esc(g.travelTime) + '</td></tr><tr><td>Recommended route</td><td>' + U.esc(g.route) + '</td></tr></table>') +
-        sec('By bus', U.rich(g.bus)) + sec('By train', U.rich(g.train)) + sec('By air', U.rich(g.air)) + sec('Local transport', U.rich(g.localTransport)) +
+        sec('Full tour guide (from Dhaka and back, estimated cost)', U.rich(EB.Spots.guideText(s))) +
         sec('Important instructions', U.rich(g.instructions)) +
         sec('Safety and travel tips', s.safetyTips.length ? '<ul>' + s.safetyTips.map((t) => '<li>' + U.esc(t) + '</li>').join('') + '</ul>' : '') +
         sec('Emergency numbers', '<ul>' + EB.EMERGENCY.map((e) => '<li>' + U.esc(e.label) + ': <strong>' + U.esc(e.number) + '</strong> (' + U.esc(e.note) + ')</li>').join('') + '</ul>') +
@@ -247,8 +247,7 @@
       const g = s.travelGuide;
       const fact = (k, v) => (v ? '<div><dt>' + k + '</dt><dd>' + U.esc(v) + '</dd></div>' : '');
       const block = (title, body) => (body ? '<section class="prose-block"><h2>' + title + '</h2>' + body + '</section>' : '');
-      const tab = (id, label, body) => ({ id, label, body: body ? U.rich(body) : '<p class="muted">No information has been added for this option yet.</p>' });
-      const tabs = [tab('bus', '🚌 By bus', g.bus), tab('train', '🚆 By train', g.train), tab('air', '✈️ By air', g.air), tab('local', '🛺 Local transport', g.localTransport)];
+      const guideHtml = EB.Spots.guideText(s).trim() ? U.rich(EB.Spots.guideText(s)) : '<p class="muted">No tour guide has been added for this spot yet.</p>';
       const near = EB.Spots.nearby(s, 4);
 
       container.innerHTML =
@@ -283,9 +282,7 @@
         '<div class="row g-3 stat-row"><div class="col-md-4"><div class="stat-tile"><span>Estimated distance</span><strong>' + U.esc(g.distance || 'Not listed') + '</strong></div></div>' +
         '<div class="col-md-4"><div class="stat-tile"><span>Estimated travel time</span><strong>' + U.esc(g.travelTime || 'Not listed') + '</strong></div></div>' +
         '<div class="col-md-4"><div class="stat-tile"><span>Recommended route</span><strong>' + U.esc(g.route || 'Not listed') + '</strong></div></div></div>' +
-        '<div class="tabs" data-tabs><div class="tabs__list" role="tablist" aria-label="Ways to travel">' +
-        tabs.map((t, i) => '<button type="button" role="tab" id="tab-' + t.id + '" aria-controls="panel-' + t.id + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '">' + t.label + '</button>').join('') + '</div>' +
-        tabs.map((t, i) => '<div role="tabpanel" id="panel-' + t.id + '" aria-labelledby="tab-' + t.id + '" class="tabs__panel prose-block" ' + (i ? 'hidden' : '') + '>' + t.body + '</div>').join('') + '</div>' +
+        '<div class="prose-block tour-guide"><h3 class="h5">Full tour guide: Dhaka to ' + U.esc(s.name) + ' and back, with estimated cost</h3>' + guideHtml + '</div>' +
         (g.instructions ? '<div class="notice"><strong>Important instructions</strong>' + U.rich(g.instructions) + '</div>' : '') + '</div>' +
 
         '<div class="container section" id="route"><div class="section-head"><h2>Route Map</h2><p class="muted">Choose where you are starting. The destination is ' + U.esc(s.name) + '.</p></div><div id="route-box"></div></div>' +
@@ -312,18 +309,6 @@
       setTimeout(showFail, 20000);
       container.querySelector('#spot-map-retry').onclick = () => { fail.hidden = true; loaded = false; frame.src = EB.Map.embedUrl(s); };
       EB.Weather.load(s, container.querySelector('#weather'));
-
-      // tabs (arrow-key navigable)
-      const tabsEl = container.querySelector('[data-tabs]'), tbs = U.qsa('[role="tab"]', tabsEl);
-      const pick = (n) => tbs.forEach((b, i) => {
-        b.setAttribute('aria-selected', String(i === n)); b.tabIndex = i === n ? 0 : -1;
-        tabsEl.querySelector('#' + b.getAttribute('aria-controls')).hidden = i !== n;
-        if (i === n) b.focus();
-      });
-      tbs.forEach((b, i) => {
-        b.onclick = () => pick(i);
-        b.onkeydown = (e) => { if (e.key === 'ArrowRight') pick((i + 1) % tbs.length); if (e.key === 'ArrowLeft') pick((i - 1 + tbs.length) % tbs.length); };
-      });
 
       // actions
       container.querySelector('[data-act="share"]').onclick = () => Guide.share(s);
