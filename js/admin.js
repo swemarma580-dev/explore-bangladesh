@@ -17,11 +17,19 @@
   const LikeData = { counts: null, error: '' };
   const likesOf = (id) => (LikeData.counts ? Number(LikeData.counts[id]) || 0 : null);
   const likeCell = (id) => { const n = likesOf(id); return n === null ? '—' : String(n); };
+  let likeTimer = null, likeRender = null, likeStop = false;
   const loadLikes = (done) => {
+    likeRender = done || likeRender;
+    /* live counts: refetch every 10 s and whenever the admin returns to this tab */
+    if (!likeTimer) {
+      likeTimer = setInterval(() => { if (!document.hidden && !likeStop) loadLikes(); }, 10000);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden && !likeStop) loadLikes(); });
+    }
     EB.Likes.counts().then((r) => {
       LikeData.counts = r.ok ? r.counts : null;
+      likeStop = !r.ok && r.reason === 'unauthorized'; // wrong key: stop asking every 10 s
       LikeData.error = r.ok ? '' : (r.reason === 'unauthorized' ? 'Wrong admin key, so like counts are hidden.' : 'Like counts need the server (/api/likes). Run "node server.js" or deploy netlify/functions/likes.js.');
-      if (done) done();
+      if (likeRender) likeRender();
     });
   };
 
