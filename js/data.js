@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 4,
+  "rev": 5,
   "added": [
     {
       "id": "spot_021",
@@ -1066,18 +1066,20 @@
       "district": "Bandarban",
       "category": "Waterfall",
       "featured": true,
-      "description": "Langlok Waterfall, also known as Liluk, is one of the tallest waterfalls in Bangladesh, towering at approximately 388 to 395 feet. Tucked away deep inside the remote forests of Thanchi, Bandarban, this hidden gem features a dramatic, narrow stream cascading down a unique concave mountain peak onto a rocky terrain below. Its Marma name translates to \"bat,\" inspired by a nearby cave. Reaching this wild wonder requires an adventurous journey involving a scenic boat ride along the Sangu River followed by an exciting trek through lush green hills and rugged streams.",
-      "history": "Description of langlok waterfall in 100wirdsDescription of langlok waterfall in 100wirdsLanglok Waterfall, also known as Liluk, is one of the tallest waterfalls in Bangladesh, towering at approximately 388 to 395 feet. Tucked away deep inside the remote forests of Thanchi, Bandarban, this hidden gem features a dramatic, narrow stream cascading down a unique concave mountain peak onto a rocky terrain below. Its Marma name translates to \"bat,\" inspired by a nearby cave. Reaching this wild wonder requires an adventurous journey involving a scenic boat ride along the Sangu River followed by an exciting trek through lush green hills and rugged streams.Would you like information on how to plan a trip there, including the best season to visit or the trekking path details?MediumA Tale of Two Magnificent Waterfalls, Langlok and LikhongBandarban, located in the picturesque Chittagong Hill Tracts of Bangladesh, is home to some of the most stunning natural wonders. ...HuntingworldbeautyLanglok waterfall - Get to know everything before traveling thereLanglok Waterfall is another wonder of hilly Bandarban. Deep in the Bandarban, the water of Langlok Waterfall cascades 388 feet do...Wikiloc | Trails of the WorldLanglok/Liluk Waterfall TrailItinerary description Langlok also known as Liluk waterfall is the 2nd highets waterfall of Bangladesh located at Bandarban near T...Show allhistory??Because Langlok Waterfall is hidden deep within an extremely remote, virtually inaccessible jungle area of Bandarban, it does not have a long, documented modern history. Instead, its background is rooted in indigenous geography and its very recent \"discovery\" by travelers:Ancient Geographical Roots: The waterfall originates from the Langlok Jhiri (stream), which flows down from the Chimbuk Hill Range and eventually empties into the scenic Sangu River.Indigenous Naming: For generations, the waterfall has been part of the lives of the local indigenous communities. The Marma people named it \"Langlok\" (meaning \"Bat\") because of a large bat cave located right next to the stream. Meanwhile, the neighboring Khumi community calls it \"Phi Phi Clay\", named after a local finch-like bird that nests on the steep, wet walls of the waterfall",
-      "whyVisit": "For adventure seekers and nature enthusiasts, Langlok Waterfall (also known as Liluk) is a bucket-list destination. Hidden deep within the untouched wilderness of Bandarban, it offers a raw and thrilling escape from modern life.Travelers endure the demanding trek to Langlok for several compelling reasons:Witness Giant Scales: Standing at a towering 388 to 395 feet, it is celebrated as one of the highest waterfalls in Bangladesh. Watching a narrow stream plunge down from a mammoth concave mountain peak is an iconic sight.Raw, Untouched Vibe: Because it was only brought to light by adventurers around 2019, it remains entirely free from commercial crowds. The environment is perfectly wild, surrounded by monolithic rocks and mist-shrouded green hills.The \"Natural Stage\" Effect: Nature has created a flat, open plain directly at the base of the waterfall. Standing on this \"stage\" surrounds you with a thundering roar and a heavy mist of water droplets that instantly washes away all trekking fatigue.The Ultimate Multimodal Adventure: The journey itself is a major selling point. To reach the trail, you take a magical, wind-swept boat ride along the rapid-filled Sangu River, weaving past the famous giant boulders of Raja Pathor (Boro Pathor).Indigenous Culture: The journey allows travelers to step away from technology and seek shelter or interact with the incredibly hospitable, remote Marma and Khumi tribal neighborhoods.Map data ©2026 Terms5 km",
+      "description": "Langlok Waterfall is a beautiful and majestic waterfall located in Bandarban, Bangladesh. It is surrounded by green hills, dense forests, and natural streams. During the monsoon, the waterfall becomes more powerful and spectacular due to the increased flow of water. The journey to Langlok involves trekking through scenic and hilly trails. Its peaceful environment and untouched natural beauty attract adventure-loving travelers. The surrounding landscape offers excellent opportunities for photography and nature exploration. Langlok is an ideal destination for those who want to experience the raw beauty of Bangladesh’s hill regions.",
+      "history": "Langlok Waterfall is a natural waterfall located in the remote hill region of Bandarban, Bangladesh. The waterfall has long been known locally as a part of the surrounding hills, forests, and natural streams. In recent years, Langlok has gained attention among adventure seekers and nature-loving travelers because of its scenic beauty and challenging trekking routes. The surrounding area reflects the natural landscape and indigenous cultural heritage of the Bandarban hill region. As tourism in the area has gradually increased, Langlok has become a notable destination for travelers seeking an off-the-beaten-path experience.",
+      "whyVisit": "Langlok Waterfall is an amazing destination for adventure, nature, and thrill-loving travelers. A scenic boat ride through the hill streams, surrounded by lush green hills and stunning landscapes, makes the journey even more exciting and memorable. The challenging trekking trail offers an adventurous experience and brings visitors closer to nature. Travelers can enjoy the breathtaking waterfall, capture beautiful photographs, and experience the untouched beauty of the hills. For those who love nature, adventure, and unique experiences, Langlok Waterfall is truly a destination worth exploring.",
       "bestTime": "Monsoon",
-      "bestTimeNote": "Because of more water in the waterfall and it's looks amazing then.",
-      "hours": "Always",
-      "entryFee": "Free",
-      "mainImage": "https://i.ibb.co.com/wFMC7CFN/images-1.jpg",
+      "bestTimeNote": "Monsoon is the best season to visit Langlok Waterfall, as the water flow is strongest and the surrounding hills become lush and green. However, the trails can be slippery, so visitors should travel carefully.",
+      "hours": "Open throughout the day, as Langlok Waterfall is a natural attraction without fixed opening or closing hours.",
+      "entryFee": "Free, because Langlok Waterfall is a natural site without an official entrance ticket.",
+      "mainImage": "https://i.ibb.co.com/C5BvVQ2X/Langlok-waterfall-8.jpg",
       "images": [
-        "https://i.ibb.co.com/wFMC7CFN/images-1.jpg"
+        "https://i.ibb.co.com/sJQGCSph/Langlok-waterfall-1.jpg",
+        "https://i.ibb.co.com/FL74WTcL/Langlok-waterfall-4.jpg",
+        "https://i.ibb.co.com/xqWW25NM/Langlok-waterfall-7.jpg"
       ],
-      "video": "https://youtu.be/zbG0hPi7Ks4",
+      "video": "https://youtu.be/AoVq4wZrtzE",
       "latitude": 21.70829,
       "longitude": 92.48426,
       "travelGuide": {
@@ -1085,15 +1087,17 @@
         "train": "",
         "air": "",
         "localTransport": "",
-        "distance": "",
-        "travelTime": "",
-        "route": "",
-        "instructions": ""
+        "distance": "Approximately 340 km from Dhaka to Bandarban, followed by the remote route to Langlok Waterfall.",
+        "travelTime": "Around 12–15 hours or more, depending on road conditions, boat travel, and trekking time.",
+        "route": "Dhaka → Bandarban → Thanchi → Tindu → Big Stone → Langlok Waterfall.",
+        "instructions": "Important Instructions: Visitors should travel with a local guide, follow local authority and community guidelines, carry sufficient food and drinking water, wear suitable trekking shoes, and exercise extra caution during the monsoon because the boat journey and hilly trails can be slippery and challenging."
       },
       "nearbyAttractions": [],
-      "safetyTips": [],
+      "safetyTips": [
+        "Travel with an experienced local guide, wear proper trekking shoes, carry enough drinking water and essential supplies, follow local rules, avoid risky areas near the waterfall, and be especially careful on slippery trails and during boat travel in the monsoon season."
+      ],
       "createdAt": "2026-09-24T10:06:30.998Z",
-      "updatedAt": "2026-09-24T11:34:12.150Z"
+      "updatedAt": "2026-09-24T12:48:57.969Z"
     }
   ],
   "removed": []
