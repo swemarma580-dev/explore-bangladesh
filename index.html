@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore Bangladesh – Discover the Beauty of Bangladesh</title>
+<meta name="description" content="Find tourist spots across Bangladesh by division and district. See photos, exact map locations and step-by-step travel directions.">
+<meta property="og:site_name" content="Explore Bangladesh">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Explore Bangladesh – Discover the Beauty of Bangladesh">
+<meta property="og:description" content="Find tourist spots across Bangladesh by division and district. See photos, exact map locations and step-by-step travel directions.">
+<meta name="theme-color" content="#04382C">
+<script>(function(){try{var t=JSON.parse(localStorage.getItem('eb_theme'));if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-bs-theme',t)}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="home" data-nav="overlay" data-base="">
+<div id="app-header"></div>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div data-hero-media></div>
+  <p class="hero__count" id="hero-count"></p>
+  <div class="container hero__inner"><div class="hero-intro">
+    <h1 id="hero-title">Explore Bangladesh</h1>
+    <p class="hero__tagline">“Discover the Beauty of Bangladesh”</p>
+    <p class="hero__lead">Discover breathtaking destinations, hidden treasures and unforgettable journeys.</p>
+    <div class="hero__ctas"><a class="eb-btn eb-btn--gold" href="tourist-spots.html">Explore Now</a><a class="eb-btn eb-btn--light" href="map.html">View Map</a></div>
+    <div class="search-card" role="search">
+      <h2><label for="hero-search">Where do you want to go?</label></h2>
+      <div class="search-card__row"><input id="hero-search" type="search" placeholder="Search tourist spots, districts or divisions..." autocomplete="off"><button id="hero-search-btn" class="eb-btn eb-btn--gold" type="button">Search</button>
+        <ul class="suggest" id="hero-suggest" role="listbox" hidden></ul></div>
+      <div class="search-card__chips" id="quick-filters" aria-label="Quick filters"></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="section container" aria-labelledby="popular-h">
+  <div class="section-head section-head--row"><div><h2 id="popular-h">Popular Tourist Spots</h2><p class="muted">Beaches, hills, forests and heritage sites that visitors love most.</p></div>
+  <a class="eb-btn eb-btn--ghost" href="tourist-spots.html">View all tourist spots</a></div>
+  <div class="card-grid" id="popular-grid"></div>
+</section>
+
+<section class="section section--tint" aria-labelledby="div-h"><div class="container">
+  <div class="section-head"><h2 id="div-h">Explore Bangladesh by Division</h2><p class="muted">Eight divisions, sixty-four districts. Pick a division to see its districts and spots.</p></div>
+  <div class="card-grid reveal" data-reveal id="division-grid"></div>
+</div></section>
+
+<section class="section container" aria-labelledby="find-h">
+  <div class="row g-4 align-items-center">
+    <div class="col-lg-5"><h2 id="find-h" class="h2">Find spots by district</h2><p class="muted">Choose a division and the district list narrows to match. Then see every tourist spot in that district.</p></div>
+    <div class="col-lg-7"><form id="find-form" class="filter-bar mb-0"><div class="row g-3 align-items-end">
+      <div class="col-md-5"><label class="form-label" for="find-division">Division</label><select id="find-division" class="form-select"></select></div>
+      <div class="col-md-5"><label class="form-label" for="find-district">District</label><select id="find-district" class="form-select"></select></div>
+      <div class="col-md-2"><button class="eb-btn eb-btn--primary w-100" type="submit">Show</button></div></div></form></div>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="cat-h"><div class="container">
+  <div class="section-head"><h2 id="cat-h">Browse by category</h2></div>
+  <div id="category-chips"></div>
+</div></section>
+
+<section class="section container" aria-labelledby="q-h">
+  <div class="section-head"><h2 id="q-h">Every place page answers three questions</h2></div>
+  <div class="row g-4 reveal" data-reveal>
+    <div class="col-md-4"><div class="q-tile"><h3>Where is the place?</h3><p>An interactive map shows the exact marker with latitude and longitude, plus one-tap Google Maps.</p></div></div>
+    <div class="col-md-4"><div class="q-tile b"><h3>What does it look like?</h3><p>Photo galleries with a full-screen viewer, plus video where available.</p></div></div>
+    <div class="col-md-4"><div class="q-tile c"><h3>How can I get there?</h3><p>Bus, train, air and local transport from Dhaka, with distance, time and a route preview.</p></div></div>
+  </div>
+</section>
+
+<section class="section container" id="recent-section" hidden aria-labelledby="rec-h">
+  <div class="section-head"><h2 id="rec-h">Recently viewed</h2></div>
+  <div class="card-grid" id="recent-grid"></div>
+</section>
+</main>
+<div id="app-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/util.js"></script>
+<script src="js/art.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/search.js"></script>
+<script src="js/map.js"></script>
+<script src="js/tourist-spots.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

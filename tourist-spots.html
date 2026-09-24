@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All Tourist Spots in Bangladesh – Explore Bangladesh</title>
+<meta name="description" content="Search and filter every tourist spot in Bangladesh by name, division, district, category and best time to visit.">
+<meta property="og:site_name" content="Explore Bangladesh">
+<meta property="og:type" content="website">
+<meta property="og:title" content="All Tourist Spots in Bangladesh – Explore Bangladesh">
+<meta property="og:description" content="Search and filter every tourist spot in Bangladesh by name, division, district, category and best time to visit.">
+<meta name="theme-color" content="#04382C">
+<script>(function(){try{var t=JSON.parse(localStorage.getItem('eb_theme'));if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-bs-theme',t)}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="spots" data-nav="solid" data-base="">
+<div id="app-header"></div>
+<main id="main">
+<section class="page-hero container" aria-labelledby="page-title">
+  <div class="page-hero__frame"><div data-hero-media></div>
+    <div class="page-hero__content"><h1 id="page-title">Tourist Spots</h1><p>Search by name, place or category, then narrow it down.</p></div></div>
+</section>
+<section class="section container" aria-label="Tourist spots">
+  <form class="filter-bar" onsubmit="return false" role="search"><div class="row g-3">
+    <div class="col-lg-4"><label class="form-label" for="f-q">Search</label><input id="f-q" class="form-control" type="search" placeholder="Search tourist spots, districts or divisions..." autocomplete="off"></div>
+    <div class="col-6 col-lg-2"><label class="form-label" for="f-division">Division</label><select id="f-division" class="form-select" data-ph="All divisions"></select></div>
+    <div class="col-6 col-lg-2"><label class="form-label" for="f-district">District</label><select id="f-district" class="form-select" data-ph="All districts"></select></div>
+    <div class="col-6 col-lg-2"><label class="form-label" for="f-category">Category</label><select id="f-category" class="form-select"></select></div>
+    <div class="col-6 col-lg-2"><label class="form-label" for="f-best">Best time</label><select id="f-best" class="form-select"></select></div>
+    <div class="col-6 col-lg-3"><label class="form-label" for="f-sort">Sort by</label><select id="f-sort" class="form-select"><option value="name">Name</option><option value="district">District</option><option value="division">Division</option><option value="category">Category</option><option value="newest">Newest first</option></select></div>
+    <div class="col-12 col-lg-9 d-flex align-items-end justify-content-between flex-wrap gap-2">
+      <div class="seg" role="group" aria-label="Which spots to show"><button type="button" data-view="all" aria-pressed="true">All spots</button><button type="button" data-view="favorites" aria-pressed="false">My favorites</button></div>
+      <button type="button" class="eb-btn eb-btn--ghost" id="f-reset">Clear filters</button></div></div></form>
+  <p class="muted" id="result-count" aria-live="polite"></p>
+  <div class="card-grid" id="spots-grid"></div>
+</section>
+</main>
+<div id="app-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/util.js"></script>
+<script src="js/art.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/search.js"></script>
+<script src="js/map.js"></script>
+<script src="js/tourist-spots.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

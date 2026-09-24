@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore Tourist Spots by Category – Explore Bangladesh</title>
+<meta name="description" content="Browse Bangladesh tourist spots by category: sea beaches, mountains, waterfalls, forests, islands, historical places and more.">
+<meta property="og:site_name" content="Explore Bangladesh">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Explore Tourist Spots by Category – Explore Bangladesh">
+<meta property="og:description" content="Browse Bangladesh tourist spots by category: sea beaches, mountains, waterfalls, forests, islands, historical places and more.">
+<meta name="theme-color" content="#04382C">
+<script>(function(){try{var t=JSON.parse(localStorage.getItem('eb_theme'));if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-bs-theme',t)}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="explore" data-nav="solid" data-base="">
+<div id="app-header"></div>
+<main id="main">
+<section class="page-hero container" aria-labelledby="page-title">
+  <div class="page-hero__frame"><div data-hero-media></div>
+    <div class="page-hero__content"><h1 id="page-title">Explore</h1><p>Pick the kind of place you love: beaches, hills, forests or heritage.</p></div></div>
+</section>
+<section class="section container" aria-labelledby="c-h">
+  <div class="section-head"><h2 id="c-h">Browse by category</h2></div>
+  <div class="tile-grid" id="category-tiles"></div>
+</section>
+<section class="section section--tint" aria-labelledby="t-h"><div class="container">
+  <div class="section-head section-head--row"><div><h2 id="t-h">Top picks</h2></div><a class="eb-btn eb-btn--ghost" href="tourist-spots.html">See every tourist spot</a></div>
+  <div class="card-grid" id="top-picks"></div></div></section>
+<section class="section container" id="recent-section" hidden aria-labelledby="r-h">
+  <div class="section-head"><h2 id="r-h">Recently viewed</h2></div><div class="card-grid" id="recent-grid"></div></section>
+</main>
+<div id="app-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/util.js"></script>
+<script src="js/art.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/search.js"></script>
+<script src="js/map.js"></script>
+<script src="js/tourist-spots.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

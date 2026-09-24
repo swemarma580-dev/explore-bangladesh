@@ -1,0 +1,634 @@
+/* ==========================================================================
+   responsive.css — tablet / phone adjustments
+   --------------------------------------------------------------------------
+   - No horizontal scrolling
+   - Mobile/tablet search input + button stay on the same row
+   - Responsive navigation
+   - Responsive cards, maps, creator section, modal, gallery
+   ========================================================================== */
+
+
+/* ==========================================================================
+   GLOBAL RESPONSIVE MEDIA
+   ========================================================================== */
+
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+
+
+/* Prevent accidental horizontal scrolling */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* ==========================================================================
+   TABLET / SMALL DESKTOP
+   ========================================================================== */
+
+@media (max-width: 1279.98px) {
+
+  /* ---------- Navigation toggle ---------- */
+
+  .nav-toggle {
+    display: inline-grid;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+
+  /* ---------- Mobile / Tablet navigation menu ---------- */
+
+  .nav-menu {
+    position: fixed;
+    inset: var(--nav-h) 0 auto 0;
+
+    background: var(--surface);
+    color: var(--ink);
+
+    padding: 1rem 1.25rem 1.5rem;
+
+    box-shadow: var(--shadow-lg);
+
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: .2s;
+
+    max-height: calc(100vh - var(--nav-h));
+    overflow: auto;
+
+    margin-left: 0;
+  }
+
+
+  .nav-menu.open {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+
+  .nav-menu a {
+    padding: .85rem .25rem;
+
+    border-bottom: 1px solid var(--line);
+
+    font-size: 1.05rem;
+
+    min-height: 44px;
+
+    display: flex;
+    align-items: center;
+  }
+
+
+  .nav-menu a::after {
+    display: none;
+  }
+
+
+  .nav-menu a[aria-current='page'] {
+    color: var(--brand);
+  }
+
+
+  .nav-menu .nav-admin a {
+    margin: 1rem 0 0;
+
+    text-align: center;
+
+    border: 1.5px solid var(--brand);
+
+    color: var(--brand);
+  }
+
+
+  .nav-tools {
+    margin-left: auto;
+    order: 2;
+  }
+
+
+  .nav-menu {
+    order: 3;
+  }
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+
+  .detail-media {
+    position: static;
+  }
+
+
+  /* ---------- Map ---------- */
+
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+
+
+  .map-side {
+    max-height: 320px;
+  }
+
+
+  /* ---------- Creator ---------- */
+
+  .creator {
+    grid-template-columns: 1fr;
+  }
+
+
+  .creator__photo img {
+    max-height: 320px;
+  }
+
+
+  .creator__info {
+    padding: 0 1.5rem 1.75rem;
+  }
+
+
+  /* ---------- Facts ---------- */
+
+  .facts > div {
+    grid-template-columns: 1fr;
+    gap: .1rem;
+  }
+
+
+  .site-footer {
+    border-radius: 28px 28px 0 0;
+  }
+
+
+  /* ========================================================================
+     SEARCH — TABLET
+     ------------------------------------------------------------------------
+     Input + Search button stay on the same row
+     ======================================================================== */
+
+  .search-card__row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: .65rem;
+
+    width: 100%;
+  }
+
+
+  .search-card__row input,
+  .search-card__row input[type="search"],
+  .search-card__row input[type="text"] {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+  }
+
+
+  .search-card__row .eb-btn {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 110px;
+    white-space: nowrap;
+  }
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+
+  :root {
+    --nav-h: 66px;
+  }
+
+
+  /* ---------- Brand ---------- */
+
+  .brand__text small {
+    display: none;
+  }
+
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    border-radius: 0 0 28px 28px;
+
+    min-height: max(100svh, 620px);
+  }
+
+
+  .hero__inner {
+    padding-bottom: 2.25rem;
+  }
+
+
+  .hero__count {
+    display: none;
+  }
+
+
+  .hero__ctas .eb-btn {
+    flex: 1 1 140px;
+  }
+
+
+  /* ========================================================================
+     SEARCH — MOBILE
+     ------------------------------------------------------------------------
+     IMPORTANT:
+     Search input + Search button remain SIDE BY SIDE.
+     ======================================================================== */
+
+  .search-card {
+    padding: 1rem;
+  }
+
+
+  .search-card__row {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: stretch;
+
+    gap: .5rem;
+
+    width: 100%;
+  }
+
+
+  /* Search input */
+
+  .search-card__row input,
+  .search-card__row input[type="search"],
+  .search-card__row input[type="text"] {
+    flex: 1 1 auto;
+
+    width: auto;
+
+    min-width: 0;
+
+    max-width: none;
+
+    font-size: .95rem;
+  }
+
+
+  /* Search button */
+
+  .search-card__row .eb-btn {
+    flex: 0 0 auto;
+
+    width: auto;
+
+    min-width: 88px;
+
+    min-height: 44px;
+
+    padding-left: .8rem;
+    padding-right: .8rem;
+
+    white-space: nowrap;
+  }
+
+
+  /* ---------- Search chips ---------- */
+
+  .search-card__chips {
+    max-width: 100%;
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+  }
+
+
+  /* ---------- Page hero ---------- */
+
+  .page-hero__frame {
+    border-radius: 22px;
+  }
+
+
+  /* ---------- Cards ---------- */
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .section-head--row {
+    align-items: flex-start;
+  }
+
+
+  /* ---------- Emergency ---------- */
+
+  .emergency li {
+    grid-template-columns: 1fr auto;
+  }
+
+
+  .emergency small {
+    grid-column: 1 / -1;
+  }
+
+
+  /* ---------- Action buttons ---------- */
+
+  .action-row .eb-btn {
+    flex: 1 1 calc(50% - .6rem);
+
+    font-size: .85rem;
+
+    padding: .6rem .7rem;
+  }
+
+
+  .action-row .eb-btn.eb-btn--primary {
+    flex-basis: 100%;
+  }
+
+
+  /* ---------- Tabs ---------- */
+
+  .tabs__list button {
+    padding: .65rem .7rem;
+
+    font-size: .92rem;
+  }
+
+
+  /* ---------- Gallery ---------- */
+
+  .gallery__thumb {
+    width: 68px;
+  }
+
+
+  /* ---------- Modal ---------- */
+
+  .modal-summary {
+    grid-template-columns: 90px 1fr;
+  }
+
+
+  .modal-summary img {
+    width: 90px;
+  }
+
+
+  .modal-actions .eb-btn {
+    flex: 1;
+  }
+
+
+  /* ---------- Toast ---------- */
+
+  #toast-host {
+    left: 1rem;
+    right: 1rem;
+
+    max-width: none;
+  }
+
+
+  /* ---------- Touch friendly buttons ---------- */
+
+  .eb-btn {
+    min-height: 44px;
+  }
+
+
+  .fav-btn,
+  .icon-btn,
+  .gallery__nav,
+  .lightbox__btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+
+/* ==========================================================================
+   EXTRA SMALL PHONES
+   ========================================================================== */
+
+@media (max-width: 420px) {
+
+  .hero__tagline {
+    font-size: 1.1rem;
+  }
+
+
+  .hero__lead {
+    font-size: 1rem;
+  }
+
+
+  .hero__ctas .eb-btn {
+    flex-basis: 100%;
+  }
+
+
+  .search-card h2 {
+    font-size: 1.1rem;
+  }
+
+
+  /* ========================================================================
+     VERY SMALL SEARCH
+     ------------------------------------------------------------------------
+     Input + button STILL remain side by side.
+     ======================================================================== */
+
+  .search-card__row {
+    gap: .4rem;
+  }
+
+
+  .search-card__row input,
+  .search-card__row input[type="search"],
+  .search-card__row input[type="text"] {
+    min-width: 0;
+
+    font-size: .9rem;
+
+    padding-left: .7rem;
+    padding-right: .7rem;
+  }
+
+
+  .search-card__row .eb-btn {
+    min-width: 78px;
+
+    padding-left: .55rem;
+    padding-right: .55rem;
+
+    font-size: .85rem;
+  }
+
+
+  .search-card__chips .chip {
+    font-size: .82rem;
+
+    padding: .35rem .8rem;
+  }
+
+
+  .page-hero__content h1 {
+    font-size: 1.7rem;
+  }
+
+
+  .div-card__body h3,
+  .spot-card__title {
+    font-size: 1.1rem;
+  }
+
+
+  .creator__info h3 {
+    font-size: 1.5rem;
+  }
+
+
+  .footer-line {
+    font-size: 1.05rem;
+  }
+}
+
+
+/* ==========================================================================
+   SHORT / LANDSCAPE PHONES
+   ========================================================================== */
+
+@media (max-height: 480px) and (orientation: landscape) {
+
+  .hero {
+    min-height: 100svh;
+  }
+
+
+  .hero__inner {
+    padding-block: calc(var(--nav-h) + 1rem) 1.5rem;
+  }
+
+
+  .hero__count {
+    display: none;
+  }
+
+
+  .nav-menu {
+    max-height: calc(100vh - var(--nav-h));
+  }
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: .001ms !important;
+  }
+
+
+  .reveal {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+
+  .site-nav,
+  .site-footer,
+  .action-row,
+  .nav-search,
+  .skip-link,
+  #toast-host {
+    display: none !important;
+  }
+
+
+  body {
+    background: #fff;
+
+    color: #000;
+  }
+}
+
+
+/* ==========================================================================
+   VERY SMALL NAVIGATION
+   ========================================================================== */
+
+@media (max-width: 575.98px) {
+
+  .brand__text strong {
+    font-size: 1rem;
+  }
+
+
+  .icon-btn {
+    width: 38px;
+
+    height: 38px;
+  }
+
+
+  .nav-inner {
+    gap: .5rem;
+  }
+
+
+  .brand {
+    min-width: 0;
+  }
+}

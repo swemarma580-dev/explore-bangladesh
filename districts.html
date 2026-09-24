@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tourist Spots by District – Explore Bangladesh</title>
+<meta name="description" content="Choose a division and district to see every tourist spot there, with photos, maps and travel directions.">
+<meta property="og:site_name" content="Explore Bangladesh">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tourist Spots by District – Explore Bangladesh">
+<meta property="og:description" content="Choose a division and district to see every tourist spot there, with photos, maps and travel directions.">
+<meta name="theme-color" content="#04382C">
+<script>(function(){try{var t=JSON.parse(localStorage.getItem('eb_theme'));if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-bs-theme',t)}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="districts" data-nav="solid" data-base="">
+<div id="app-header"></div>
+<main id="main">
+<section class="page-hero container" aria-labelledby="page-title">
+  <div class="page-hero__frame"><div data-hero-media></div>
+    <div class="page-hero__content"><h1 id="page-title">Districts</h1><p>Choose a division, then a district, and see what is there.</p></div></div>
+</section>
+<section class="section container" aria-labelledby="district-title">
+  <form class="filter-bar" onsubmit="return false"><div class="row g-3">
+    <div class="col-md-6"><label class="form-label" for="sel-division">Division</label><select id="sel-division" class="form-select"></select></div>
+    <div class="col-md-6"><label class="form-label" for="sel-district">District</label><select id="sel-district" class="form-select"></select></div></div></form>
+  <div class="section-head"><h2 id="district-title"></h2><p class="muted" id="district-count" aria-live="polite"></p></div>
+  <div class="card-grid" id="district-results"></div>
+</section>
+</main>
+<div id="app-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/util.js"></script>
+<script src="js/art.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/search.js"></script>
+<script src="js/map.js"></script>
+<script src="js/tourist-spots.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

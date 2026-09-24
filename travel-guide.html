@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bangladesh Travel Guide – Explore Bangladesh</title>
+<meta name="description" content="Practical travel guidance for Bangladesh: getting around, best seasons, what to pack, emergency numbers, and printable guides.">
+<meta property="og:site_name" content="Explore Bangladesh">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bangladesh Travel Guide – Explore Bangladesh">
+<meta property="og:description" content="Practical travel guidance for Bangladesh: getting around, best seasons, what to pack, emergency numbers, and printable guides.">
+<meta name="theme-color" content="#04382C">
+<script>(function(){try{var t=JSON.parse(localStorage.getItem('eb_theme'));if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-bs-theme',t)}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="guide" data-nav="solid" data-base="">
+<div id="app-header"></div>
+<main id="main">
+<section class="page-hero container" aria-labelledby="page-title">
+  <div class="page-hero__frame"><div data-hero-media></div>
+    <div class="page-hero__content"><h1 id="page-title">Travel Guide</h1><p>Getting around, staying safe and travelling well.</p></div></div>
+</section>
+<section class="section container" aria-labelledby="g1">
+  <div class="section-head"><h2 id="g1">Get a printable guide for any spot</h2><p class="muted">Pick a tourist spot to print its travel guide or save it as a file you can open offline.</p></div>
+  <div class="filter-bar"><div class="row g-3 align-items-end">
+    <div class="col-lg-6"><label class="form-label" for="guide-spot">Tourist spot</label><select id="guide-spot" class="form-select"></select></div>
+    <div class="col-lg-6 d-flex gap-2 flex-wrap">
+      <button type="button" class="eb-btn eb-btn--primary" data-guide-act="print" disabled>Print Travel Guide</button>
+      <button type="button" class="eb-btn eb-btn--ghost" data-guide-act="download" disabled>Download Travel Guide</button>
+      <a class="eb-btn eb-btn--ghost" id="guide-open" hidden href="#">Open details page</a></div></div></div>
+</section>
+
+<section class="section section--tint" aria-labelledby="g2"><div class="container">
+  <div class="section-head"><h2 id="g2">Getting around Bangladesh</h2><p class="muted">Schedules, fares and access rules change often, so confirm before you leave.</p></div>
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-3"><div class="info-card"><h3 class="h4">🚌 Bus</h3><p class="muted">The most flexible option. AC coaches serve major routes from Dhaka; book a seat in advance for weekends and holidays, and confirm the boarding counter.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="info-card"><h3 class="h4">🚆 Train</h3><p class="muted">Intercity trains are comfortable on routes to Sylhet, Chattogram, Rajshahi, Khulna and Rangpur. Tickets are sold on the Bangladesh Railway e-ticket site (eticket.railway.gov.bd) and sell out fast.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="info-card"><h3 class="h4">✈️ Air</h3><p class="muted">Domestic flights connect Dhaka with Chattogram, Cox's Bazar, Sylhet, Jashore, Barishal, Saidpur, Rajshahi and other airports, and save many hours on long routes.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="info-card"><h3 class="h4">🛺 Local</h3><p class="muted">CNG auto-rickshaws, rickshaws, ride-share apps in big cities, jeeps in the hills and boats on rivers and haors. Agree the fare before you start.</p></div></div>
+  </div>
+</div></section>
+
+<section class="section container" aria-labelledby="g3">
+  <div class="section-head"><h2 id="g3">When to go</h2></div>
+  <div class="row g-4">
+    <div class="col-md-4"><div class="q-tile"><h3>Winter (November to February)</h3><p>Dry, cool and clear. The best season for most beaches, hills, heritage sites and bird watching.</p></div></div>
+    <div class="col-md-4"><div class="q-tile b"><h3>Summer (March to May)</h3><p>Hot and humid, with occasional storms. Good for cooler hill stations; plan sightseeing early in the day.</p></div></div>
+    <div class="col-md-4"><div class="q-tile c"><h3>Monsoon (June to October)</h3><p>Green landscapes, full waterfalls, flooded swamp forests and haors. Roads and boats can be disrupted, so allow extra time.</p></div></div>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="g4"><div class="container"><div class="row g-4">
+  <div class="col-lg-6"><div class="info-card"><h2 id="g4" class="h4">Packing checklist</h2>
+    <ul class="mt-3"><li>Light cotton clothes, a rain jacket and a hat</li><li>Comfortable walking shoes with grip</li><li>Sunscreen, insect repellent and any medicines you need</li><li>Reusable water bottle and a power bank</li><li>Cash in small notes; card acceptance is limited outside cities</li><li>National ID or passport, plus copies</li></ul></div></div>
+  <div class="col-lg-6"><div class="info-card"><h2 class="h4">Emergency information</h2><p class="muted small">Numbers can change. Verify before you travel.</p><ul class="emergency" id="emergency-list"></ul></div></div>
+</div></div></section>
+
+<section class="section container" aria-labelledby="g5">
+  <div class="section-head"><h2 id="g5">Travel responsibly</h2></div>
+  <div class="row g-4">
+    <div class="col-md-4"><div class="info-card"><h3 class="h4">Keep places clean</h3><p class="muted">Carry your rubbish out. Avoid single-use plastic on beaches, in forests and near water.</p></div></div>
+    <div class="col-md-4"><div class="info-card"><h3 class="h4">Respect local culture</h3><p class="muted">Dress modestly at religious sites, ask before photographing people, and support local guides and shops.</p></div></div>
+    <div class="col-md-4"><div class="info-card"><h3 class="h4">Follow local rules</h3><p class="muted">Follow safety instructions, permits and warnings for forests, borders and sea. Check the weather before you go.</p></div></div>
+  </div>
+</section>
+</main>
+<div id="app-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/util.js"></script>
+<script src="js/art.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/search.js"></script>
+<script src="js/map.js"></script>
+<script src="js/tourist-spots.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

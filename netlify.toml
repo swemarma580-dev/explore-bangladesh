@@ -1,0 +1,12 @@
+# Explore Bangladesh: Netlify settings
+# If you already have a netlify.toml, merge these two blocks into it.
+
+[functions]
+  directory = "netlify/functions"
+
+# lets the admin panel call the same /api/spots/* URLs on Netlify and on the local server.js
+[[redirects]]
+  from = "/api/spots/*"
+  to = "/.netlify/functions/spots/:splat"
+  status = 200
+  force = true
