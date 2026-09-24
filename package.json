@@ -1,0 +1,9 @@
+{
+  "name": "explore-bangladesh",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Explore Bangladesh - tourist spots website",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
