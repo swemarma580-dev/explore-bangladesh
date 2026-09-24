@@ -49,7 +49,8 @@ export default async (req) => {
   const action = new URL(req.url).pathname.replace(/\/+$/, "").split("/").pop();
   let body = {};
   try { body = await req.json(); } catch (e) { /* empty body is fine for top/counts */ }
-  const store = getStore("likes");
+  // "strong": a like is visible to the very next read (the default is eventually consistent)
+  const store = getStore({ name: "likes", consistency: "strong" });
 
   try {
     if (action === "toggle") {
