@@ -45,9 +45,11 @@
         if (!b) return;
         e.preventDefault();
         const id = b.getAttribute('data-fav');
+        const before = EB.Favorites.has(id);
         const on = EB.Favorites.toggle(id);
         U.qsa('[data-fav]').filter((x) => x.getAttribute('data-fav') === id).forEach((x) => x.setAttribute('aria-pressed', String(on)));
-        U.toast(on ? 'Saved to favorites.' : 'Removed from favorites.', 'info');
+        if (on === before) U.toast('Could not save your like. Browser storage is full.', 'error');
+        else U.toast(on ? 'You liked this spot.' : 'Like removed.', 'info');
         EB.Refresh.run('favorites');
       });
     }
