@@ -63,7 +63,7 @@
       Likes.flush();
     },
 
-    /* sends queued changes one by one; stops on a temporary failure and retries later */
+    /* sends queued changes one by one; stops at the first failure and retries later */
     async flush() {
       if (Likes._busy) return;
       Likes._busy = true;
@@ -76,15 +76,26 @@
           const liked = p[id];
           const r = await EB.Source.call('/api/likes/toggle', { id, liked, voter: Likes.voterId() });
           if (!r.ok) {
-            // temporary problem (server down / not configured): keep the queue, retry on next load or next like
-            if (r.reason === 'offline' || r.reason === 'unauthorized' || r.reason === 'not_configured' || r.reason === 'error') break;
-            // permanent rejection (bad id / bad request): drop it so one bad entry never blocks the rest
-            const bad = S.get(PENDING, {}); delete bad[id]; S.set(PENDING, bad); continue;
+            // only a clear "bad request" is dropped, so one bad entry never blocks the rest;
+            // every other failure (offline, wrong route, server error) keeps the like queued
+            if (r.reason === 'bad_request') { const bad = S.get(PENDING, {}); delete bad[id]; S.set(PENDING, bad); continue; }
+            Likes.retryLater();
+            break;
           }
+          Likes._tries = 0;
           const q = S.get(PENDING, {});
           if (q[id] === liked) { delete q[id]; S.set(PENDING, q); } // else changed meanwhile: send the newer value next
         }
       } finally { Likes._busy = false; }
+    },
+
+    /* no page refresh needed: a failed send is retried automatically */
+    _timer: null,
+    _tries: 0,
+    retryLater() {
+      if (Likes._timer || Likes._tries >= 6) return;
+      Likes._tries++;
+      Likes._timer = setTimeout(() => { Likes._timer = null; Likes.flush(); }, Math.min(30000, 2000 * Likes._tries));
     },
 
     /* ranked spot ids from the last successful request (no counts) */
@@ -113,17 +124,22 @@
         S.set(BOOT, true);
       }
       Likes.flush();
+      window.addEventListener('online', () => { Likes._tries = 0; Likes.flush(); });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) { Likes._tries = 0; Likes.flush(); } });
     }
   });
 
   /* -------------------------------------------------------------- Favorites */
   const Favorites = (EB.Favorites = makeList(K.fav, Infinity));
+  /* One click = one change. Returns the state that was really saved, so the heart
+     always matches it (if the browser refuses to save, the heart does not flip). */
   Favorites.toggle = function (id) {
     const cur = Favorites.list();
     const on = !cur.includes(id);
     S.set(K.fav, on ? cur.concat(id) : cur.filter((x) => x !== id));
-    Likes.sync(id, on); // like / unlike, counted once per visitor on the server
-    return on;
+    const saved = Favorites.has(id);
+    if (saved === on) Likes.sync(id, on); // like / unlike, counted once per visitor on the server
+    return saved;
   };
   Favorites.spots = () => Favorites.list().map((id) => EB.Spots.get(id)).filter(Boolean);
 
