@@ -1057,8 +1057,45 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 2,
-  "added": [],
+  "rev": 3,
+  "added": [
+    {
+      "id": "spot_021",
+      "name": "Langlok Waterfall",
+      "division": "Chattogram",
+      "district": "Bandarban",
+      "category": "Waterfall",
+      "featured": true,
+      "description": "Langlok Waterfall, also known as Liluk, is one of the tallest waterfalls in Bangladesh, towering at approximately 388 to 395 feet. Tucked away deep inside the remote forests of Thanchi, Bandarban, this hidden gem features a dramatic, narrow stream cascading down a unique concave mountain peak onto a rocky terrain below. Its Marma name translates to \"bat,\" inspired by a nearby cave. Reaching this wild wonder requires an adventurous journey involving a scenic boat ride along the Sangu River followed by an exciting trek through lush green hills and rugged streams.",
+      "history": "Description of langlok waterfall in 100wirdsDescription of langlok waterfall in 100wirdsLanglok Waterfall, also known as Liluk, is one of the tallest waterfalls in Bangladesh, towering at approximately 388 to 395 feet. Tucked away deep inside the remote forests of Thanchi, Bandarban, this hidden gem features a dramatic, narrow stream cascading down a unique concave mountain peak onto a rocky terrain below. Its Marma name translates to \"bat,\" inspired by a nearby cave. Reaching this wild wonder requires an adventurous journey involving a scenic boat ride along the Sangu River followed by an exciting trek through lush green hills and rugged streams.Would you like information on how to plan a trip there, including the best season to visit or the trekking path details?MediumA Tale of Two Magnificent Waterfalls, Langlok and LikhongBandarban, located in the picturesque Chittagong Hill Tracts of Bangladesh, is home to some of the most stunning natural wonders. ...HuntingworldbeautyLanglok waterfall - Get to know everything before traveling thereLanglok Waterfall is another wonder of hilly Bandarban. Deep in the Bandarban, the water of Langlok Waterfall cascades 388 feet do...Wikiloc | Trails of the WorldLanglok/Liluk Waterfall TrailItinerary description Langlok also known as Liluk waterfall is the 2nd highets waterfall of Bangladesh located at Bandarban near T...Show allhistory??Because Langlok Waterfall is hidden deep within an extremely remote, virtually inaccessible jungle area of Bandarban, it does not have a long, documented modern history. Instead, its background is rooted in indigenous geography and its very recent \"discovery\" by travelers:Ancient Geographical Roots: The waterfall originates from the Langlok Jhiri (stream), which flows down from the Chimbuk Hill Range and eventually empties into the scenic Sangu River.Indigenous Naming: For generations, the waterfall has been part of the lives of the local indigenous communities. The Marma people named it \"Langlok\" (meaning \"Bat\") because of a large bat cave located right next to the stream. Meanwhile, the neighboring Khumi community calls it \"Phi Phi Clay\", named after a local finch-like bird that nests on the steep, wet walls of the waterfall",
+      "whyVisit": "For adventure seekers and nature enthusiasts, Langlok Waterfall (also known as Liluk) is a bucket-list destination. Hidden deep within the untouched wilderness of Bandarban, it offers a raw and thrilling escape from modern life.Travelers endure the demanding trek to Langlok for several compelling reasons:Witness Giant Scales: Standing at a towering 388 to 395 feet, it is celebrated as one of the highest waterfalls in Bangladesh. Watching a narrow stream plunge down from a mammoth concave mountain peak is an iconic sight.Raw, Untouched Vibe: Because it was only brought to light by adventurers around 2019, it remains entirely free from commercial crowds. The environment is perfectly wild, surrounded by monolithic rocks and mist-shrouded green hills.The \"Natural Stage\" Effect: Nature has created a flat, open plain directly at the base of the waterfall. Standing on this \"stage\" surrounds you with a thundering roar and a heavy mist of water droplets that instantly washes away all trekking fatigue.The Ultimate Multimodal Adventure: The journey itself is a major selling point. To reach the trail, you take a magical, wind-swept boat ride along the rapid-filled Sangu River, weaving past the famous giant boulders of Raja Pathor (Boro Pathor).Indigenous Culture: The journey allows travelers to step away from technology and seek shelter or interact with the incredibly hospitable, remote Marma and Khumi tribal neighborhoods.Map data ©2026 Terms5 km",
+      "bestTime": "Monsoon",
+      "bestTimeNote": "Because of more water in the waterfall and it's looks amazing then.",
+      "hours": "Always",
+      "entryFee": "Free",
+      "mainImage": "https://i.ibb.co.com/wFMC7CFN/images-1.jpg",
+      "images": [
+        "https://i.ibb.co.com/wFMC7CFN/images-1.jpg"
+      ],
+      "video": "https://youtu.be/zbG0hPi7Ks4",
+      "latitude": 21.70829,
+      "longitude": 92.48426,
+      "travelGuide": {
+        "bus": "",
+        "train": "",
+        "air": "",
+        "localTransport": "",
+        "distance": "",
+        "travelTime": "",
+        "route": "",
+        "instructions": ""
+      },
+      "nearbyAttractions": [],
+      "safetyTips": [],
+      "createdAt": "2026-09-24T10:06:30.998Z",
+      "updatedAt": "2026-09-24T10:06:30.998Z"
+    }
+  ],
   "removed": []
 };
   /* <<< ADMIN_MANAGED_END */
