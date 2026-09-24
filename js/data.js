@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 3,
+  "rev": 4,
   "added": [
     {
       "id": "spot_021",
@@ -1093,7 +1093,7 @@
       "nearbyAttractions": [],
       "safetyTips": [],
       "createdAt": "2026-09-24T10:06:30.998Z",
-      "updatedAt": "2026-09-24T10:06:30.998Z"
+      "updatedAt": "2026-09-24T11:34:12.150Z"
     }
   ],
   "removed": []
