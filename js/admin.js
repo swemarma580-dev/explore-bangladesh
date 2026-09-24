@@ -307,7 +307,7 @@
         '<div class="nearby-list" id="sf-near">' + (others.length ? others.map((s) => '<label class="check" data-name="' + U_.esc(U_.norm(s.name + ' ' + s.district)) + '"><input type="checkbox" value="' + U_.esc(s.id) + '"' + (sel.has(s.id) ? ' checked' : '') + '> ' + U_.esc(s.name) + ' <small class="muted">(' + U_.esc(s.district) + ')</small></label>').join('') : '<p class="muted">No other tourist spots yet.</p>') + '</div></section>' +
 
         '<section class="admin-card"><h2>Travel guidance</h2><p class="muted">Directions from Dhaka. Plain text; start lines with "- " for bullets.</p>' +
-        fld('sf-bus', 'Bus route', ta('sf-bus', g.bus, 3, 'Terminal, operators, duration, where to get off, local transport from the stop')) + fld('sf-train', 'Train route', ta('sf-train', g.train, 3)) + fld('sf-air', 'Air route', ta('sf-air', g.air, 3)) + fld('sf-local', 'Local transport', ta('sf-local', g.localTransport, 3, 'CNG, auto-rickshaw, bus, rickshaw, boat, jeep...')) +
+        fld('sf-guide', 'Full tour guide', ta('sf-guide', edit ? EB.Spots.guideText(spot) : '', 12, 'How to go from Dhaka, what to do at the spot, how to come back, and the estimated total cost'), false, 'One text for everything: the way to go from Dhaka (bus, train, air, local transport), visiting the spot, the way back to Dhaka, and an estimated cost per person.') +
         '<div class="row g-3"><div class="col-md-4">' + fld('sf-dist', 'Estimated distance', inp('sf-dist', g.distance, 'e.g. About 300 km from Dhaka')) + '</div><div class="col-md-4">' + fld('sf-time', 'Estimated travel time', inp('sf-time', g.travelTime, 'e.g. 8 to 10 hours')) + '</div><div class="col-md-4">' + fld('sf-route', 'Recommended route', inp('sf-route', g.route)) + '</div></div>' +
         fld('sf-instr', 'Important instructions', ta('sf-instr', g.instructions, 3)) + fld('sf-tips', 'Safety and travel tips', ta('sf-tips', edit ? spot.safetyTips.join('\n') : '', 5), false, 'One tip per line.') + '</section>' +
 
@@ -379,7 +379,7 @@
           mainImage: st.mainImage || EB.Art.forCategory(cats || 'Nature'), images: st.images.slice(), video: st.video && U_.videoInfo(st.video) ? st.video : '',
           latitude: parseFloat($f('sf-lat').value), longitude: parseFloat($f('sf-lng').value),
           nearbyAttractions: U_.qsa('#sf-near input:checked', container).map((c) => c.value),
-          travelGuide: { bus: val('sf-bus'), train: val('sf-train'), air: val('sf-air'), localTransport: val('sf-local'), distance: val('sf-dist'), travelTime: val('sf-time'), route: val('sf-route'), instructions: val('sf-instr') },
+          travelGuide: { guide: val('sf-guide'), distance: val('sf-dist'), travelTime: val('sf-time'), route: val('sf-route'), instructions: val('sf-instr') },
           safetyTips: $f('sf-tips').value.split('\n').map((t) => t.trim()).filter(Boolean)
         };
       };
