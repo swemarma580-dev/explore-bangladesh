@@ -107,6 +107,18 @@
   /* ---- shape normaliser: makes imported/edited data safe to render ---- */
   const str = (v) => (v == null ? '' : String(v));
   const arr = (v) => (Array.isArray(v) ? v : []);
+
+  /* One "full tour guide" text per spot (Dhaka -> spot -> back, with estimated cost).
+     Older records kept four separate fields (bus / train / air / localTransport);
+     they are folded into that one text so nothing already saved is lost. */
+  const guideOf = (tg) => {
+    tg = tg || {};
+    if (str(tg.guide).trim()) return str(tg.guide);
+    return [['By bus', tg.bus], ['By train', tg.train], ['By air', tg.air], ['Local transport', tg.localTransport]]
+      .filter((p) => str(p[1]).trim())
+      .map((p) => p[0] + ':\n' + str(p[1]).trim())
+      .join('\n\n');
+  };
   function normalize(s) {
     const tg = s.travelGuide || {};
     return {
@@ -129,7 +141,7 @@
       latitude: Number(s.latitude),
       longitude: Number(s.longitude),
       travelGuide: {
-        bus: str(tg.bus), train: str(tg.train), air: str(tg.air), localTransport: str(tg.localTransport),
+        guide: guideOf(tg),
         distance: str(tg.distance), travelTime: str(tg.travelTime), route: str(tg.route), instructions: str(tg.instructions)
       },
       nearbyAttractions: arr(s.nearbyAttractions).map(str),
@@ -145,6 +157,8 @@
   /* ---- repository ---- */
   const Spots = (EB.Spots = {
     normalize,
+    /* the full tour guide text of a spot (works for old and new records) */
+    guideText(spot) { return guideOf(spot && spot.travelGuide); },
     /* seed once from data.js (EB.SEED_SPOTS already includes admin-added spots).
        An existing (even empty) list is never overwritten; it is reconciled instead. */
     init() {
