@@ -22,6 +22,7 @@
   --radius: 22px;
   --radius-sm: 12px;
   --nav-h: 76px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
 }
@@ -123,15 +124,21 @@ img {
   border: 2px solid transparent;
   cursor: pointer;
   transition:
-    transform 0.15s,
-    background 0.15s,
-    color 0.15s,
-    border-color 0.15s;
+    transform 0.2s var(--ease),
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   font-family: inherit;
   line-height: 1.2;
 }
 .eb-btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(16, 42, 58, 0.35);
+}
+.eb-btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: none;
 }
 .eb-btn[disabled],
 .eb-btn[aria-disabled="true"] {
@@ -200,9 +207,14 @@ img {
   background: transparent;
   color: inherit;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s var(--ease);
 }
 .icon-btn:hover {
   background: rgba(127, 127, 127, 0.18);
+  transform: scale(1.08);
+}
+.icon-btn:active {
+  transform: scale(0.92);
 }
 .chip {
   display: inline-block;
@@ -215,10 +227,12 @@ img {
   font-weight: 600;
   font-size: 0.9rem;
   backdrop-filter: blur(6px);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s var(--ease);
 }
 .chip:hover {
   background: #fff;
   color: var(--brand-deep);
+  transform: translateY(-2px);
 }
 .badge-eb {
   display: inline-block;
@@ -325,6 +339,7 @@ img {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.93rem;
+  transition: color 0.2s ease;
 }
 .nav-menu a::after {
   content: "";
@@ -336,7 +351,7 @@ img {
   border-radius: 3px;
   background: var(--gold);
   transform: scaleX(0);
-  transition: transform 0.2s;
+  transition: transform 0.25s var(--ease);
 }
 .nav-menu a:hover::after,
 .nav-menu a[aria-current="page"]::after {
@@ -347,6 +362,7 @@ img {
   border-radius: 999px;
   margin-left: 0.4rem;
   padding: 0.35rem 0.9rem;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 .nav-menu .nav-admin a::after {
   display: none;
@@ -395,6 +411,7 @@ img {
   border-radius: 8px;
   text-decoration: none;
   color: var(--ink);
+  transition: background 0.15s ease;
 }
 .suggest li a span {
   color: var(--muted);
@@ -566,6 +583,10 @@ img {
   background: #fff;
   color: #10293a;
   min-width: 0;
+  transition: box-shadow 0.2s ease;
+}
+.search-card input:focus {
+  box-shadow: 0 0 0 3px rgba(244, 183, 49, 0.55);
 }
 .search-card .suggest {
   top: 100%;
@@ -651,6 +672,11 @@ img {
   height: 100%;
   box-shadow: var(--shadow);
   border-top: 5px solid var(--brand);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+}
+.q-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 .q-tile:nth-child(2) {
   border-color: var(--water);
@@ -685,11 +711,11 @@ img {
   display: flex;
   flex-direction: column;
   transition:
-    transform 0.25s,
-    box-shadow 0.25s;
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
 }
 .spot-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
 }
 .spot-card__media {
@@ -702,7 +728,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s;
+  transition: transform 0.6s var(--ease);
 }
 .spot-card:hover .spot-card__media img {
   transform: scale(1.06);
@@ -757,10 +783,14 @@ img {
   place-items: center;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.15s;
+  transition: transform 0.15s var(--ease);
 }
 .fav-btn:hover {
   transform: scale(1.1);
+}
+.fav-btn:active,
+.fav-inline:active {
+  transform: scale(0.85);
 }
 .fav-btn[aria-pressed="true"] {
   color: var(--red);
@@ -781,6 +811,11 @@ img {
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.div-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
 }
 .div-card__media {
   display: block;
@@ -791,7 +826,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s;
+  transition: transform 0.6s var(--ease);
 }
 .div-card:hover .div-card__media img {
   transform: scale(1.06);
@@ -840,6 +875,7 @@ img {
   color: var(--ink);
   font-weight: 600;
   margin: 0 0.4rem 0.6rem 0;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s var(--ease), box-shadow 0.2s ease;
 }
 .cat-chip em {
   font-style: normal;
@@ -852,6 +888,8 @@ img {
 .cat-chip:hover {
   border-color: var(--brand);
   color: var(--brand);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 .cat-tile {
   position: relative;
@@ -861,12 +899,17 @@ img {
   aspect-ratio: 4 / 3;
   text-decoration: none;
   color: #fff;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+}
+.cat-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 .cat-tile img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s;
+  transition: transform 0.5s var(--ease);
 }
 .cat-tile:hover img {
   transform: scale(1.07);
@@ -894,6 +937,7 @@ img {
   text-decoration: none;
   color: var(--ink);
   height: 100%;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s var(--ease);
 }
 .district-tile span {
   color: var(--muted);
@@ -902,6 +946,7 @@ img {
 .district-tile:hover {
   border-color: var(--brand);
   box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 .district-tile.is-empty {
   opacity: 0.65;
@@ -914,12 +959,21 @@ img {
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+}
+.mini-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 .mini-card__media img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s var(--ease);
+}
+.mini-card:hover .mini-card__media img {
+  transform: scale(1.06);
 }
 .mini-card__body {
   padding: 0.9rem 1rem 1.1rem;
@@ -963,10 +1017,10 @@ img {
 }
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(24px) scale(0.98);
   transition:
-    opacity 0.6s,
-    transform 0.6s;
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
 }
 .reveal.in {
   opacity: 1;
@@ -993,6 +1047,7 @@ img {
   background-color: var(--surface);
   color: var(--ink);
   padding: 0.65rem 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .form-control:focus,
 .form-select:focus {
@@ -1020,6 +1075,7 @@ img {
   color: var(--muted);
   cursor: pointer;
   font-family: inherit;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 .seg button[aria-pressed="true"] {
   background: var(--brand);
@@ -1093,6 +1149,32 @@ img {
   position: sticky;
   top: calc(var(--nav-h) + 16px);
 }
+/* Large screens: the photo/video panel fills the remaining viewport height
+   instead of a short fixed-ratio box, so it stays sticky with no empty gap
+   beneath it while the description column scrolls. It naturally scrolls
+   away once the two-column row ends, right as the map section arrives. */
+@media (min-width: 992px) {
+  .detail-media {
+    height: calc(100vh - var(--nav-h) - 32px);
+    min-height: 480px;
+    display: flex;
+  }
+  .detail-media .gallery {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+  }
+  .detail-media .gallery__stage {
+    flex: 1 1 auto;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+  .detail-media .gallery__thumbs {
+    flex: none;
+  }
+}
 .gallery {
   position: relative;
 }
@@ -1102,6 +1184,21 @@ img {
   aspect-ratio: 16 / 10;
   background: #10293a;
   box-shadow: var(--shadow-lg);
+  touch-action: pan-y;
+  cursor: grab;
+}
+.gallery__stage:active {
+  cursor: grabbing;
+}
+@keyframes galleryFade {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 .gallery__img,
 .gallery__video {
@@ -1111,6 +1208,7 @@ img {
   display: block;
   border: 0;
   cursor: zoom-in;
+  animation: galleryFade 0.55s var(--ease);
 }
 .gallery__video {
   cursor: auto;
@@ -1131,6 +1229,11 @@ img {
   place-items: center;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.gallery__nav:hover {
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 .gallery__nav--prev {
   left: 12px;
@@ -1165,6 +1268,11 @@ img {
   display: grid;
   place-items: center;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s var(--ease);
+}
+.gallery__zoom:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.08);
 }
 .gallery__count {
   position: absolute;
@@ -1195,6 +1303,11 @@ img {
   background: none;
   cursor: pointer;
   opacity: 0.75;
+  transition: opacity 0.25s ease, border-color 0.25s ease, transform 0.2s var(--ease);
+}
+.gallery__thumb:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
 }
 .gallery__thumb.active {
   border-color: var(--gold);
@@ -1228,6 +1341,7 @@ img {
   max-width: 100%;
   max-height: 86vh;
   border-radius: 12px;
+  animation: galleryFade 0.4s var(--ease);
 }
 .lightbox__btn {
   position: absolute;
@@ -1240,6 +1354,11 @@ img {
   place-items: center;
   cursor: pointer;
   color: #10293a;
+  transition: transform 0.2s var(--ease), background 0.2s ease;
+}
+.lightbox__btn:hover {
+  transform: scale(1.08);
+  background: #fff;
 }
 .lightbox__close {
   top: 6px;
@@ -1363,6 +1482,11 @@ img {
   border-left: 5px solid var(--water);
   height: 100%;
   box-shadow: var(--shadow);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s ease;
+}
+.stat-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 .stat-tile span {
   display: block;
@@ -1389,6 +1513,7 @@ img {
   cursor: pointer;
   font-family: inherit;
   font-size: 1rem;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 .tabs__list button[aria-selected="true"] {
   color: var(--brand);
@@ -1489,6 +1614,7 @@ img {
   flex-direction: column;
   color: var(--ink);
   font-family: inherit;
+  transition: background 0.15s ease;
 }
 .map-list button span {
   color: var(--muted);
@@ -1556,6 +1682,10 @@ img {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.88rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s var(--ease);
+}
+.social a:hover {
+  transform: translateY(-2px);
 }
 
 /* ---------- footer ---------- */
@@ -1616,7 +1746,7 @@ img {
   place-items: center;
   padding: 1rem;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.25s var(--ease);
 }
 .eb-modal.show {
   opacity: 1;
@@ -1637,8 +1767,8 @@ img {
   max-height: 92vh;
   overflow: auto;
   box-shadow: var(--shadow-lg);
-  transform: translateY(12px) scale(0.98);
-  transition: transform 0.2s;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.25s var(--ease);
 }
 .eb-modal.show .eb-modal__dialog {
   transform: none;
@@ -1699,7 +1829,7 @@ img {
   border-left: 5px solid #4ade80;
   transform: translateY(14px);
   opacity: 0;
-  transition: 0.3s;
+  transition: 0.3s var(--ease);
 }
 .toast-eb.show {
   transform: none;
