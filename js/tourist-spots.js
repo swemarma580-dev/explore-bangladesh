@@ -83,6 +83,7 @@
         '</div>' + (spot.video && !U.videoInfo(spot.video) ? '<p class="muted small">The video link could not be played.</p>' : (!spot.video ? '<p class="muted small gallery__note">No video has been added for this spot yet.</p>' : ''));
       const stage = el.querySelector('.gallery__stage'), count = el.querySelector('.gallery__count');
       const thumbs = U.qsa('.gallery__thumb', el);
+
       const show = (i) => {
         idx = (i + items.length) % items.length;
         stage.innerHTML = Gallery.stage(items[idx]);
@@ -91,15 +92,66 @@
         el.classList.toggle('is-video', items[idx].type === 'video');
         const zoom = el.querySelector('.gallery__zoom'); zoom.hidden = items[idx].type === 'video';
       };
-      el.querySelector('.gallery__nav--prev').onclick = () => show(idx - 1);
-      el.querySelector('.gallery__nav--next').onclick = () => show(idx + 1);
-      thumbs.forEach((t) => (t.onclick = () => show(+t.dataset.i)));
+
+      /* ---- gentle auto-advance: cycles the photos on its own, skips over a
+         video instead of interrupting it, and pauses whenever the visitor
+         is actually looking (hover, focus, touch) or the tab isn't visible. */
+      let autoplayId = null;
+      const AUTOPLAY_MS = 4200;
+      const stopAutoplay = () => { if (autoplayId) { clearInterval(autoplayId); autoplayId = null; } };
+      const startAutoplay = () => {
+        stopAutoplay();
+        if (items.length < 2 || document.hidden) return;
+        autoplayId = setInterval(() => { if (items[idx].type !== 'video') show(idx + 1); }, AUTOPLAY_MS);
+      };
+      const restartAutoplay = () => { stopAutoplay(); startAutoplay(); };
+
+      el.querySelector('.gallery__nav--prev').onclick = () => { show(idx - 1); restartAutoplay(); };
+      el.querySelector('.gallery__nav--next').onclick = () => { show(idx + 1); restartAutoplay(); };
+      thumbs.forEach((t) => (t.onclick = () => { show(+t.dataset.i); restartAutoplay(); }));
       el.setAttribute('tabindex', '0');
       el.setAttribute('aria-roledescription', 'carousel');
-      el.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') show(idx - 1); if (e.key === 'ArrowRight') show(idx + 1); });
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { show(idx - 1); restartAutoplay(); }
+        if (e.key === 'ArrowRight') { show(idx + 1); restartAutoplay(); }
+      });
       el.querySelector('.gallery__zoom').onclick = () => Gallery.lightbox(items.filter((x) => x.type === 'img'), Math.min(idx, items.filter((x) => x.type === 'img').length - 1));
-      stage.addEventListener('click', (e) => { if (e.target.classList.contains('gallery__img')) el.querySelector('.gallery__zoom').click(); });
+
+      /* ---- swipe / drag on the stage to change photo smoothly, mouse and touch alike ---- */
+      let dragging = false, dragStartX = 0, dragDX = 0;
+      const DRAG_THRESHOLD = 42;
+      stage.addEventListener('click', (e) => {
+        if (Math.abs(dragDX) > 5) { dragDX = 0; return; } // a swipe just finished here, not a tap
+        if (e.target.classList.contains('gallery__img')) el.querySelector('.gallery__zoom').click();
+      });
+      stage.addEventListener('pointerdown', (e) => {
+        if (e.target.closest('.gallery__video')) return; // let native video controls work normally
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        dragging = true; dragStartX = e.clientX; dragDX = 0;
+        stopAutoplay();
+        if (stage.setPointerCapture) { try { stage.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ } }
+      });
+      stage.addEventListener('pointermove', (e) => { if (dragging) dragDX = e.clientX - dragStartX; });
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        if (dragDX > DRAG_THRESHOLD) show(idx - 1);
+        else if (dragDX < -DRAG_THRESHOLD) show(idx + 1);
+        startAutoplay();
+      };
+      stage.addEventListener('pointerup', endDrag);
+      stage.addEventListener('pointercancel', endDrag);
+      stage.addEventListener('pointerleave', endDrag);
+
+      /* pause the slideshow while the visitor is looking closely, resume after */
+      el.addEventListener('mouseenter', stopAutoplay);
+      el.addEventListener('mouseleave', startAutoplay);
+      el.addEventListener('focusin', stopAutoplay);
+      el.addEventListener('focusout', startAutoplay);
+      document.addEventListener('visibilitychange', () => { if (document.hidden) stopAutoplay(); else startAutoplay(); });
+
       show(0);
+      startAutoplay();
     },
     lightbox(imgs, start) {
       let i = start || 0;
