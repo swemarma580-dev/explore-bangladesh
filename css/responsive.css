@@ -372,11 +372,16 @@ div {
   }
 
 
+  /* Explore Now / View Map stay side by side, one row, on mobile too */
+  .hero__ctas {
+    flex-wrap: nowrap;
+  }
+
+
   .hero__ctas .eb-btn {
-    flex:
-      1
-      1
-      140px;
+    flex: 1 1 140px;
+
+    min-width: 0;
   }
 
 
@@ -619,8 +624,27 @@ div {
   }
 
 
+  /* Keep Explore Now / View Map on one row even on the smallest phones —
+     they shrink and lose some padding instead of stacking full-width. */
+  .hero__ctas {
+    flex-wrap: nowrap;
+
+    gap: 0.5rem;
+  }
+
+
   .hero__ctas .eb-btn {
-    flex-basis: 100%;
+    flex: 1 1 0;
+
+    min-width: 0;
+
+    padding-left: 0.8rem;
+
+    padding-right: 0.8rem;
+
+    font-size: 0.82rem;
+
+    white-space: nowrap;
   }
 
 
