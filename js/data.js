@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 7,
+  "rev": 8,
   "added": [
     {
       "id": "spot_021",
@@ -1130,16 +1130,19 @@
         "air": "",
         "localTransport": "",
         "distance": "The total distance from Dhaka to Nafakhum consists of approximately 390 km by road, followed by a 3-hour boat ride from Thanchi and a 6.1 km trek through hilly trails.",
-        "travelTime": "",
-        "route": "",
-        "instructions": ""
+        "travelTime": "Around 15–20 hours or more, depending on road conditions, boat travel, and trekking time.",
+        "route": "Dhaka → Bandarban (Bus/Car) → Thanchi (Jeep/Bus) → Tindu (Boat) → Bara Pathar / Big Stone (Boat) → Remakri (Boat) → Nafakhum Waterfall (Trek).",
+        "instructions": "Permission & Safety: You must hire a registered local guide, secure official clearance from the Thanchi Army Camp, and wear a life jacket at all times during the Sangu River boat ride.\nPreparation & Trekking: Wear high-grip footwear to safely navigate the slippery, rocky trail and carry sufficient physical cash, as there are no ATMs or digital payment options available after Thanchi."
       },
       "nearbyAttractions": [
         "spot_021"
       ],
-      "safetyTips": [],
+      "safetyTips": [
+        "Travel Safety: Check the current local security situation and weather warnings before leaving Bandarban town, as heavy rainfall can cause flash floods and make the mountain roads or the Sangu River highly dangerous.",
+        "Health & Network: Bring a basic first-aid kit with water purification tablets and insect repellent, and be prepared for zero mobile network coverage once you cross Thanchi."
+      ],
       "createdAt": "2026-09-26T00:56:28.174Z",
-      "updatedAt": "2026-09-26T02:08:08.263Z"
+      "updatedAt": "2026-09-26T02:12:09.862Z"
     }
   ],
   "removed": []
