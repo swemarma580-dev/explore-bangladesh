@@ -362,7 +362,7 @@ lightbox(imgs, start) {
         '<button type="button" class="eb-btn eb-btn--ghost" data-act="download">' + I.download + '<span>Download Travel Guide</span></button>' +
         '<a class="eb-btn eb-btn--primary" href="' + U.gmapsView(s.latitude, s.longitude) + '" target="_blank" rel="noopener">' + I.external + '<span>View Location on Google Maps</span></a></div></div>' +
 
-        '<div class="container"><div class="row g-4 detail-cols">' +
+        '<div class="container"><div class="row g-4 detail-cols align-items-start">' +
         '<div class="col-lg-6 order-2 order-lg-1 detail-info">' +
         block('About this place', U.rich(s.description)) + block('History', U.rich(s.history)) + block('Why visit', U.rich(s.whyVisit)) +
         '<section class="prose-block"><h2>Visitor information</h2><dl class="facts">' +
