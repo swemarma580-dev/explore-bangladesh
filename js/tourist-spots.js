@@ -70,107 +70,154 @@
         return '<iframe class="gallery__video" src="' + U.esc(it.v.src) + '" title="' + U.esc(it.alt) + '" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
       return '<video class="gallery__video" controls playsinline preload="metadata" src="' + U.esc(it.v.src) + '" aria-label="' + U.esc(it.alt) + '"></video>';
     },
-    mount(el, spot) {
-      const items = Gallery.items(spot); let idx = 0;
-      el.classList.add('gallery');
-      el.innerHTML = '<div class="gallery__stage"></div>' +
-        '<button type="button" class="gallery__nav gallery__nav--prev" aria-label="Previous">' + I.left + '</button>' +
-        '<button type="button" class="gallery__nav gallery__nav--next" aria-label="Next">' + I.right + '</button>' +
-        '<button type="button" class="gallery__zoom" aria-label="Open full-screen viewer">' + I.expand + '</button>' +
-        '<div class="gallery__count" aria-live="polite"></div>' +
-        '<div class="gallery__thumbs" role="tablist" aria-label="Photos and video">' +
-        items.map((it, i) => '<button type="button" role="tab" class="gallery__thumb" data-i="' + i + '" aria-label="' + (it.type === 'video' ? 'Play video' : 'Photo ' + (i + 1)) + '"><img src="' + it.src + '" alt="" loading="lazy">' + (it.type === 'video' ? '<span class="gallery__play">' + I.play + '</span>' : '') + '</button>').join('') +
-        '</div>' + (spot.video && !U.videoInfo(spot.video) ? '<p class="muted small">The video link could not be played.</p>' : (!spot.video ? '<p class="muted small gallery__note">No video has been added for this spot yet.</p>' : ''));
-      const stage = el.querySelector('.gallery__stage'), count = el.querySelector('.gallery__count');
-      const thumbs = U.qsa('.gallery__thumb', el);
+  mount(el, spot) {
+  const items = Gallery.items(spot); let idx = 0;
+  el.classList.add('gallery');
+  el.innerHTML = '<div class="gallery__stage"></div>' +
+    '<button type="button" class="gallery__nav gallery__nav--prev" aria-label="Previous">' + I.left + '</button>' +
+    '<button type="button" class="gallery__nav gallery__nav--next" aria-label="Next">' + I.right + '</button>' +
+    '<button type="button" class="gallery__zoom" aria-label="Open full-screen viewer">' + I.expand + '</button>' +
+    '<div class="gallery__count" aria-live="polite"></div>' +
+    '<div class="gallery__thumbs" role="tablist" aria-label="Photos and video">' +
+    items.map((it, i) => '<button type="button" role="tab" class="gallery__thumb" data-i="' + i + '" aria-label="' + (it.type === 'video' ? 'Play video' : 'Photo ' + (i + 1)) + '"><img src="' + it.src + '" alt="" loading="lazy">' + (it.type === 'video' ? '<span class="gallery__play">' + I.play + '</span>' : '') + '</button>').join('') +
+    '</div>' + (spot.video && !U.videoInfo(spot.video) ? '<p class="muted small">The video link could not be played.</p>' : (!spot.video ? '<p class="muted small gallery__note">No video has been added for this spot yet.</p>' : ''));
+  const stage = el.querySelector('.gallery__stage'), count = el.querySelector('.gallery__count');
+  const thumbs = U.qsa('.gallery__thumb', el);
 
-      const show = (i) => {
-        idx = (i + items.length) % items.length;
-        stage.innerHTML = Gallery.stage(items[idx]);
-        count.textContent = (idx + 1) + ' / ' + items.length;
-        thumbs.forEach((t, n) => { t.setAttribute('aria-selected', String(n === idx)); t.classList.toggle('active', n === idx); });
-        el.classList.toggle('is-video', items[idx].type === 'video');
-        const zoom = el.querySelector('.gallery__zoom'); zoom.hidden = items[idx].type === 'video';
-      };
+  const show = (i) => {
+    idx = (i + items.length) % items.length; // loops forever both directions
+    stage.innerHTML = Gallery.stage(items[idx]);
+    count.textContent = (idx + 1) + ' / ' + items.length;
+    thumbs.forEach((t, n) => { t.setAttribute('aria-selected', String(n === idx)); t.classList.toggle('active', n === idx); });
+    el.classList.toggle('is-video', items[idx].type === 'video');
+    const zoom = el.querySelector('.gallery__zoom'); zoom.hidden = items[idx].type === 'video';
+  };
 
-      /* ---- gentle auto-advance: cycles the photos on its own, skips over a
-         video instead of interrupting it, and pauses whenever the visitor
-         is actually looking (hover, focus, touch) or the tab isn't visible. */
-      let autoplayId = null;
-      const AUTOPLAY_MS = 4200;
-      const stopAutoplay = () => { if (autoplayId) { clearInterval(autoplayId); autoplayId = null; } };
-      const startAutoplay = () => {
-        stopAutoplay();
-        if (items.length < 2 || document.hidden) return;
-        autoplayId = setInterval(() => { if (items[idx].type !== 'video') show(idx + 1); }, AUTOPLAY_MS);
-      };
-      const restartAutoplay = () => { stopAutoplay(); startAutoplay(); };
+  /* ---- gentle auto-advance: cycles the photos on its own (loops from the
+     last photo back to the first), skips over a video instead of
+     interrupting it, and pauses whenever the visitor is actually looking
+     (hover, focus, touch, opening the full-screen viewer) or the tab isn't
+     visible. Resumes after a short 0.5s delay so it doesn't feel abrupt. */
+  let autoplayId = null, restartTimeoutId = null;
+  const AUTOPLAY_MS = 2000;
+  const RESTART_DELAY_MS = 500;
+  const stopAutoplay = () => {
+    if (autoplayId) { clearInterval(autoplayId); autoplayId = null; }
+    if (restartTimeoutId) { clearTimeout(restartTimeoutId); restartTimeoutId = null; }
+  };
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (items.length < 2 || document.hidden) return;
+    autoplayId = setInterval(() => { if (items[idx].type !== 'video') show(idx + 1); }, AUTOPLAY_MS);
+  };
+  const restartAutoplay = () => {
+    stopAutoplay();
+    restartTimeoutId = setTimeout(startAutoplay, RESTART_DELAY_MS);
+  };
 
-      el.querySelector('.gallery__nav--prev').onclick = () => { show(idx - 1); restartAutoplay(); };
-      el.querySelector('.gallery__nav--next').onclick = () => { show(idx + 1); restartAutoplay(); };
-      thumbs.forEach((t) => (t.onclick = () => { show(+t.dataset.i); restartAutoplay(); }));
-      el.setAttribute('tabindex', '0');
-      el.setAttribute('aria-roledescription', 'carousel');
-      el.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') { show(idx - 1); restartAutoplay(); }
-        if (e.key === 'ArrowRight') { show(idx + 1); restartAutoplay(); }
+  el.querySelector('.gallery__nav--prev').onclick = () => { show(idx - 1); restartAutoplay(); };
+  el.querySelector('.gallery__nav--next').onclick = () => { show(idx + 1); restartAutoplay(); };
+  thumbs.forEach((t) => (t.onclick = () => { show(+t.dataset.i); restartAutoplay(); }));
+  el.setAttribute('tabindex', '0');
+  el.setAttribute('aria-roledescription', 'carousel');
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { show(idx - 1); restartAutoplay(); }
+    if (e.key === 'ArrowRight') { show(idx + 1); restartAutoplay(); }
+  });
+
+  /* ---- opening the full-screen viewer: pause autoplay, resume once it's closed ---- */
+  const openZoom = () => {
+    stopAutoplay();
+    const imgsOnly = items.filter((x) => x.type === 'img');
+    const startAt = Math.min(idx, imgsOnly.length - 1);
+    const m = Gallery.lightbox(imgsOnly, startAt);
+    if (m && m.wrap) {
+      const mo = new MutationObserver(() => {
+        if (!document.body.contains(m.wrap)) { mo.disconnect(); startAutoplay(); }
       });
-      el.querySelector('.gallery__zoom').onclick = () => Gallery.lightbox(items.filter((x) => x.type === 'img'), Math.min(idx, items.filter((x) => x.type === 'img').length - 1));
+      mo.observe(document.body, { childList: true, subtree: true });
+    } else {
+      // fallback if the modal shape ever changes: just resume after a bit
+      restartAutoplay();
+    }
+  };
+  el.querySelector('.gallery__zoom').onclick = openZoom;
 
-      /* ---- swipe / drag on the stage to change photo smoothly, mouse and touch alike ---- */
-      let dragging = false, dragStartX = 0, dragDX = 0;
-      const DRAG_THRESHOLD = 42;
-      stage.addEventListener('click', (e) => {
-        if (Math.abs(dragDX) > 5) { dragDX = 0; return; } // a swipe just finished here, not a tap
-        if (e.target.classList.contains('gallery__img')) el.querySelector('.gallery__zoom').click();
-      });
-      stage.addEventListener('pointerdown', (e) => {
-        if (e.target.closest('.gallery__video')) return; // let native video controls work normally
-        if (e.pointerType === 'mouse' && e.button !== 0) return;
-        dragging = true; dragStartX = e.clientX; dragDX = 0;
-        stopAutoplay();
-        if (stage.setPointerCapture) { try { stage.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ } }
-      });
-      stage.addEventListener('pointermove', (e) => { if (dragging) dragDX = e.clientX - dragStartX; });
-      const endDrag = () => {
-        if (!dragging) return;
-        dragging = false;
-        if (dragDX > DRAG_THRESHOLD) show(idx - 1);
-        else if (dragDX < -DRAG_THRESHOLD) show(idx + 1);
-        startAutoplay();
-      };
-      stage.addEventListener('pointerup', endDrag);
-      stage.addEventListener('pointercancel', endDrag);
-      stage.addEventListener('pointerleave', endDrag);
-
-      /* pause the slideshow while the visitor is looking closely, resume after */
-      el.addEventListener('mouseenter', stopAutoplay);
-      el.addEventListener('mouseleave', startAutoplay);
-      el.addEventListener('focusin', stopAutoplay);
-      el.addEventListener('focusout', startAutoplay);
-      document.addEventListener('visibilitychange', () => { if (document.hidden) stopAutoplay(); else startAutoplay(); });
-
-      show(0);
-      startAutoplay();
-    },
-    lightbox(imgs, start) {
-      let i = start || 0;
-      const m = U.modal('<div class="lightbox"><button type="button" class="lightbox__btn lightbox__close" data-close aria-label="Close viewer" data-autofocus>' + I.close + '</button>' +
-        '<button type="button" class="lightbox__btn lightbox__full" aria-label="Toggle full screen">' + I.expand + '</button>' +
-        '<button type="button" class="lightbox__btn lightbox__prev" aria-label="Previous photo">' + I.left + '</button>' +
-        '<img alt=""><button type="button" class="lightbox__btn lightbox__next" aria-label="Next photo">' + I.right + '</button></div>', { label: 'Photo viewer' });
-      m.wrap.classList.add('eb-modal--dark');
-      const img = m.el.querySelector('img');
-      const set = (n) => { i = (n + imgs.length) % imgs.length; img.src = imgs[i].src; img.alt = imgs[i].alt; };
-      m.el.querySelector('.lightbox__prev').onclick = () => set(i - 1);
-      m.el.querySelector('.lightbox__next').onclick = () => set(i + 1);
-      m.el.querySelector('.lightbox__full').onclick = () => {
-        const t = m.el; if (document.fullscreenElement) document.exitFullscreen(); else if (t.requestFullscreen) t.requestFullscreen().catch(() => {});
-      };
-      m.el.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') set(i - 1); if (e.key === 'ArrowRight') set(i + 1); });
-      set(i);
+  /* ---- swipe / drag on the stage: the photo follows the pointer live
+     (slow drag = small, slow movement; fast/long drag = bigger movement),
+     a tap opens the full-screen viewer, and releasing past the threshold
+     snaps to the next/previous photo; otherwise it springs back. ---- */
+  let dragging = false, dragStartX = 0, dragDX = 0, dragEl = null;
+  const DRAG_THRESHOLD = 42;
+  stage.addEventListener('click', (e) => {
+    if (Math.abs(dragDX) > 5) { dragDX = 0; return; } // a swipe just finished here, not a tap
+    if (e.target.classList.contains('gallery__img')) openZoom();
+  });
+  stage.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('.gallery__video')) return; // let native video controls work normally
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true; dragStartX = e.clientX; dragDX = 0;
+    dragEl = stage.querySelector('.gallery__img, .gallery__video');
+    if (dragEl) dragEl.style.transition = 'none';
+    stopAutoplay();
+    if (stage.setPointerCapture) { try { stage.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ } }
+  });
+  stage.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    dragDX = e.clientX - dragStartX;
+    if (dragEl) {
+      dragEl.style.transform = 'translateX(' + dragDX + 'px)';
+      dragEl.style.opacity = String(Math.max(0.35, 1 - Math.abs(dragDX) / 380));
     }
   });
+  const endDrag = () => {
+    if (!dragging) return;
+    dragging = false;
+    const el2 = dragEl; dragEl = null;
+    if (el2) el2.style.transition = 'transform 0.22s var(--ease), opacity 0.22s ease-out';
+    if (dragDX > DRAG_THRESHOLD) {
+      if (el2) { el2.style.transform = 'translateX(120%)'; el2.style.opacity = '0'; }
+      setTimeout(() => show(idx - 1), 180);
+    } else if (dragDX < -DRAG_THRESHOLD) {
+      if (el2) { el2.style.transform = 'translateX(-120%)'; el2.style.opacity = '0'; }
+      setTimeout(() => show(idx + 1), 180);
+    } else if (el2) {
+      el2.style.transform = ''; el2.style.opacity = ''; // spring back, no real swipe
+    }
+    restartAutoplay(); // dragDX is left as-is here on purpose — the click handler above reads it to tell a tap from a swipe
+  };
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+  stage.addEventListener('pointerleave', endDrag);
+
+  /* pause the slideshow while the visitor is looking closely, resume after */
+  el.addEventListener('mouseenter', stopAutoplay);
+  el.addEventListener('mouseleave', startAutoplay);
+  el.addEventListener('focusin', stopAutoplay);
+  el.addEventListener('focusout', startAutoplay);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopAutoplay(); else startAutoplay(); });
+
+  show(0);
+  startAutoplay();
+},
+lightbox(imgs, start) {
+  let i = start || 0;
+  const m = U.modal('<div class="lightbox"><button type="button" class="lightbox__btn lightbox__close" data-close aria-label="Close viewer" data-autofocus>' + I.close + '</button>' +
+    '<button type="button" class="lightbox__btn lightbox__full" aria-label="Toggle full screen">' + I.expand + '</button>' +
+    '<button type="button" class="lightbox__btn lightbox__prev" aria-label="Previous photo">' + I.left + '</button>' +
+    '<img alt=""><button type="button" class="lightbox__btn lightbox__next" aria-label="Next photo">' + I.right + '</button></div>', { label: 'Photo viewer' });
+  m.wrap.classList.add('eb-modal--dark');
+  const img = m.el.querySelector('img');
+  const set = (n) => { i = (n + imgs.length) % imgs.length; img.src = imgs[i].src; img.alt = imgs[i].alt; };
+  m.el.querySelector('.lightbox__prev').onclick = () => set(i - 1);
+  m.el.querySelector('.lightbox__next').onclick = () => set(i + 1);
+  m.el.querySelector('.lightbox__full').onclick = () => {
+    const t = m.el; if (document.fullscreenElement) document.exitFullscreen(); else if (t.requestFullscreen) t.requestFullscreen().catch(() => {});
+  };
+  m.el.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') set(i - 1); if (e.key === 'ArrowRight') set(i + 1); });
+  set(i);
+  return m; // <-- নতুন: caller (Gallery.mount) কে modal বন্ধ হওয়া detect করতে দেওয়ার জন্য
+}    
 
   /* ------------------------------------------------- Printable / downloadable guide */
   const Guide = (EB.Guide = {
