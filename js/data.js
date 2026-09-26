@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 5,
+  "rev": 6,
   "added": [
     {
       "id": "spot_021",
@@ -1098,6 +1098,46 @@
       ],
       "createdAt": "2026-09-24T10:06:30.998Z",
       "updatedAt": "2026-09-24T12:48:57.969Z"
+    },
+    {
+      "id": "spot_022",
+      "name": "Nafakhum Waterfall",
+      "division": "Chattogram",
+      "district": "Bandarban",
+      "category": "Waterfall",
+      "featured": true,
+      "description": "AI Mode conversation: nafakhum waterfallnafakhum waterfallNafakhum Waterfall is widely regarded as the \"Niagara of Bangladesh\" because it is the country's largest waterfall by water volume. Tucked deep within the remote hills of Thanchi, Bandarban, this stunning cascade drops roughly 25 to 30 feet where the Remakri Canal abruptly plunges into a rugged gorge. The name originates from the Marma words \"Ngafa\" (a type of local fish) and \"Khong\" or \"Khum\" (meaning waterfall), capturing the raw, wild essence of the indigenous Hill Tracts.Due to the heavy mist and roaring water crashing over ancient boulders, visitors frequently witness vibrant rainbows forming in the sunlight. Reaching this hidden paradise is considered a high-effort, high-reward trekking milestone for adventure seekers.🗺️ Geographic Location & Travel OverviewBecause the waterfall is hidden deep in a remote, protected zone, traveling here requires a step-by-step combination of off-road driving, boat navigation, and hiking:\n[Rich media excluded from paste]\n\nTravel PhaseRoute & Mode of TransportEstimated DurationKey Highlights / DetailsPhase 1Dhaka to Bandarban via overnight highway bus.~7–8 hoursBuses depart from Dhaka terminal locations like Gulistan or Sayedabad.Phase 2Bandarban to Thanchi via local bus or 4WD Chander Gari (Jeep).~4–4.5 hoursWinding mountain passes showcasing spectacular views of Nilgiri and Chimbuk hills.Phase 3Thanchi to Remakri via traditional engine boat upstream on the Sangu River.~2–3 hoursA breathtaking river journey navigating through massive boulders like Bara Pathar.Phase 4Remakri to Nafakhum via foot trekking along the riverbed and forest.~2–3 hoursA challenging hike over slippery rocks and shallow streams.🎒 Essential Travel Requirements & TipsMandatory Guide & Permits: You must register and secure security clearances from the local police and Border Guard Bangladesh (BGB) camp in Thanchi. Hiring a certified local guide from the Thanchi market is legally required.Accommodation: There are no commercial resorts at the waterfall. Travelers usually stay overnight in traditional wooden cottages hosted by the indigenous Marma or Tripura communities in Remakri Bazar before trekking the next morning.Slippery Trails: The rocks along the Remakri canal are incredibly smooth and hazardous. Pack high-traction trekking sandals or water shoes, a dry bag for electronics, and basic medical supplies.Best Time to Visit: The peak window is from September to November. During these autumn months, the water volume remains massive and powerful, yet the trails and river currents are safe enough to navigate comfortably. (The peak monsoon season often forces temporary safety closures due to flash floods).Are you planning an upcoming trek? I can help you with:Estimating a total cost budget for a groupSharing contact details or requirements for hiring local guidesRecommending nearby trails like Amiakhum, Velakhum, or SatvaiakhumWikipediaNafakhum Waterfall - WikipediaNafakhum Waterfall - Wikipedia Nafakhum Waterfall Article Learn more This article needs more citations. Please help improve this a...ভ্রমণ গাইডনাফাখুম জলপ্রপাত, বান্দরবান - নাফাখুম ভ্রমণের সকল প্রয়োজনীয় তথ্যনাফাখুম জলপ্রপাত, বান্দরবান - নাফাখুম ভ্রমণের সকল প্রয়োজনীয় তথ্য ছবিঃ ভ্রমণগাইড নাফাখুম নাফাখুম জলপ্রপাত (Nafakhum Waterfall) বা...TripadvisorNafa-khum - All You SHOULD Know Before Going 2026 (with Reviews)Nafakhum is a natural waterfall in the Remakri region of Bandarban, Bangladesh. It's a remote area that's about a 2–3 hour trek fr...Show alltour er best time kokhon ebong keno dui line e likhoনাফাখুম ট্যুরের জন্য সবচেয়ে সেরা সময় হলো সেপ্টেম্বর থেকে নভেম্বর (বর্ষার ঠিক পর)। এ সময়ে জলপ্রপাতে পানির ভরপুর ও প্রমত্ত রূপ দেখা যায়, আবার একই সাথে নদী ও পাহাড়ি ট্রেইলগুলো বর্ষার তুলনায় অনেক নিরাপদ ও যাতায়াতের উপযোগী থাকে।আপনি কি এই ট্রিপের জন্য একটি ট্যুর প্ল্যান বা বাজেট জানতে চান, নাকি থাঞ্চিতে গাইড ও পারমিট পাওয়ার প্রক্রিয়া সম্পর্কে জানতে চান?english e daoThe best time to visit Nafakhum is from September to November (right after the monsoon). During this period, the waterfall is at its most powerful and breathtaking volume, while the river and trekking trails become safe and manageable to navigate.Would you like me to help you create a detailed tour itinerary for these months, or calculate a budget breakdown for your group?DescriptionNafakhum Waterfall is a magnificent cascade nestled deep within the Thanchi Upazila of Bandarban, Bangladesh. Renowned as the country's most powerful waterfall by water volume, it is formed where the Remakri Canal takes a sudden, dramatic drop over giant limestone boulders into a rugged stone gorge. Surrounded by dense, untouched tropical forests and majestic hills, the waterfall generates a permanent mist that frequently creates vibrant rainbows in the sunlight.\n\nThe destination is a sacred part of the local indigenous Marma and Tripura communities, with its name originating from the Marma words \"Ngafa\" (a native fish species) and \"Khum\" (meaning waterfall). Because of its remote location, reaching Nafakhum is a classic adventure milestone that requires journeying by off-road jeep, navigating the rapids of the Sangu River in a traditional engine boat, and trekking on foot through wild river trails.",
+      "history": "Nafakhum Waterfall has a history deeply rooted in indigenous folklore and ecological isolation before it became Bangladesh's ultimate adventure destination. For centuries, this hidden canyon was known only to the local Marma and Tripura communities, who named it after the Marma words \"Nafa\" (a native fish species) and \"Khum\" (waterfall) Niagara of Bangladesh. According to local tribal legend, a unique flying fish called \"Nating\" would swim upstream but could not leap over the massive 30-foot drop, causing them to gather in large numbers at the bottom of the falls, which made it a historic fishing sanctuary. Geologically formed by the thousands of years of water erosion from the Remakri Canal cutting through the limestone hills of Bandarban, it remained completely cut off from the modern world until the mid-2000s. Between 2005 and 2008, early extreme-backpackers finally charted the route, and as word spread across travel blogs about its massive water volume, it was dubbed the \"Niagara of Bangladesh\" Niagara of Bangladesh. Today, it has transformed into a regulated eco-tourism zone monitored by the Border Guard Bangladesh (BGB), providing a crucial livelihood for the remote mountain communities while preserving its wild heritage.",
+      "whyVisit": "You should visit Nafakhum Waterfall to experience the raw, untouched beauty of the \"Niagara of Bangladesh,\" where you can witness the country’s most powerful water volume roaring through a dramatic stone gorge. The journey itself is an unforgettable, multi-layered adventure that combines off-road jeep rides, thrilling boat navigation through the rapids of the Sangu River, and scenic trekking along wild riverbeds. It offers a rare opportunity to disconnect from modern life, immerse yourself in the rich culture and hospitality of the indigenous Marma and Tripura communities, and witness vibrant, natural rainbows forming over ancient boulders.",
+      "bestTime": "Monsoon",
+      "bestTimeNote": "During this period, the waterfall is at its most powerful and breathtaking volume, while the river and trekking trails become safe and manageable to navigate.",
+      "hours": "Open throughout the day, as Langlok Waterfall is a natural attraction without fixed opening or closing hours.",
+      "entryFee": "Free, because Langlok Waterfall is a natural site without an official entrance ticket.",
+      "mainImage": "https://i.ibb.co.com/jvmjZJCN/IMG-20260530-100335-1.jpg",
+      "images": [
+        "https://i.ibb.co.com/6cRxnr68/unnamed-2.webp",
+        "https://i.ibb.co.com/tw2MCJk1/IMG-20260530-102131.jpg",
+        "https://i.ibb.co.com/SwSHLzTc/1a-1.jpg",
+        "https://i.ibb.co.com/wZXs3WFJ/nafakhum-waterfall-incredible-look-morning-180481066.jpg",
+        "https://i.ibb.co.com/1trqPpbz/unnamed-1.webp"
+      ],
+      "video": "",
+      "latitude": 21.720349621161315,
+      "longitude": 92.53418390941398,
+      "travelGuide": {
+        "bus": "",
+        "train": "",
+        "air": "",
+        "localTransport": "",
+        "distance": "",
+        "travelTime": "",
+        "route": "",
+        "instructions": ""
+      },
+      "nearbyAttractions": [],
+      "safetyTips": [],
+      "createdAt": "2026-09-26T00:56:28.174Z",
+      "updatedAt": "2026-09-26T00:56:28.174Z"
     }
   ],
   "removed": []
