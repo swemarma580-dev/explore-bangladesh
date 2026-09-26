@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 6,
+  "rev": 7,
   "added": [
     {
       "id": "spot_021",
@@ -1121,23 +1121,25 @@
         "https://i.ibb.co.com/wZXs3WFJ/nafakhum-waterfall-incredible-look-morning-180481066.jpg",
         "https://i.ibb.co.com/1trqPpbz/unnamed-1.webp"
       ],
-      "video": "",
-      "latitude": 21.720349621161315,
-      "longitude": 92.53418390941398,
+      "video": "https://youtu.be/VGFqS6nEIjI",
+      "latitude": 21.72035,
+      "longitude": 92.53418,
       "travelGuide": {
         "bus": "",
         "train": "",
         "air": "",
         "localTransport": "",
-        "distance": "",
+        "distance": "The total distance from Dhaka to Nafakhum consists of approximately 390 km by road, followed by a 3-hour boat ride from Thanchi and a 6.1 km trek through hilly trails.",
         "travelTime": "",
         "route": "",
         "instructions": ""
       },
-      "nearbyAttractions": [],
+      "nearbyAttractions": [
+        "spot_021"
+      ],
       "safetyTips": [],
       "createdAt": "2026-09-26T00:56:28.174Z",
-      "updatedAt": "2026-09-26T00:56:28.174Z"
+      "updatedAt": "2026-09-26T02:08:08.263Z"
     }
   ],
   "removed": []
