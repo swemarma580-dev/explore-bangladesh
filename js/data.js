@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 9,
+  "rev": 10,
   "added": [
     {
       "id": "spot_021",
@@ -1142,7 +1142,7 @@
         "Health & Network: Bring a basic first-aid kit with water purification tablets and insect repellent, and be prepared for zero mobile network coverage once you cross Thanchi."
       ],
       "createdAt": "2026-09-26T00:56:28.174Z",
-      "updatedAt": "2026-09-27T14:22:17.291Z"
+      "updatedAt": "2026-09-27T14:22:21.842Z"
     }
   ],
   "removed": []
