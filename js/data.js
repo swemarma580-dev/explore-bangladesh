@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 14,
+  "rev": 15,
   "added": [
     {
       "id": "spot_021",
@@ -1121,7 +1121,7 @@
         "https://i.ibb.co.com/wZXs3WFJ/nafakhum-waterfall-incredible-look-morning-180481066.jpg",
         "https://i.ibb.co.com/1trqPpbz/unnamed-1.webp"
       ],
-      "video": "https://youtu.be/VGFqS6nEIjI",
+      "video": "https://youtu.be/gd4-rgprfF8",
       "latitude": 21.72035,
       "longitude": 92.53418,
       "travelGuide": {
@@ -1142,7 +1142,7 @@
         "Health & Network: Bring a basic first-aid kit with water purification tablets and insect repellent, and be prepared for zero mobile network coverage once you cross Thanchi."
       ],
       "createdAt": "2026-09-26T00:56:28.174Z",
-      "updatedAt": "2026-09-27T14:26:25.187Z"
+      "updatedAt": "2026-09-28T07:46:17.735Z"
     }
   ],
   "removed": []
