@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 16,
+  "rev": 17,
   "added": [
     {
       "id": "spot_021",
@@ -1143,6 +1143,42 @@
       ],
       "createdAt": "2026-09-26T00:56:28.174Z",
       "updatedAt": "2026-09-28T07:46:54.476Z"
+    },
+    {
+      "id": "spot_023",
+      "name": "Shoingong Waterfall",
+      "division": "Chattogram",
+      "district": "Bandarban",
+      "category": "Waterfall",
+      "featured": true,
+      "description": "Shoingong Waterfall, hidden deep within the forests of Thanchi in Bandarban, is one of the most wild, remote, and stepped cascade waterfalls in Bangladesh. In the Marma language, its name translates to \"squirrel's head\" because the distant silhouette of the hill and the waterflow strikingly resembles a squirrel. It is a pristine paradise featuring massive rocky ledges and crystal-clear cold water. Surrounded by ancient rainforests and rocky streams far from human settlement, this waterfall is an ideal destination for extreme adventure-seeking trekkers.",
+      "history": "Shoingong Waterfall has been a hidden sanctuary for generations, deeply integrated into the culture and survival of the local Marma community. In their native language, the name Shoingong translates to \"Squirrel's Head,\" inspired by the unique shape of the hill and water stream from a distance. The trail passes near Royandok, a mountain steep in tribal folklore and myths about ancient mountain spirits. For centuries, it remained completely isolated from the outside world due to its extreme geographical barriers. It was only in recent years that hardcore adventure trekkers mapped the route, introducing this ancient paradise to mainstream exploration.",
+      "whyVisit": "• Untamed Natural Beauty: Shoingong is one of Bangladesh's most pristine, stepped-cascade waterfalls, offering an untouched paradise of massive rocky ledges and crystal-clear pools.\n• Ultimate Off-Road Adventure: The journey demands extreme trekking through deep ancient rainforests and rugged streams, making it the perfect thrill for hardcore adrenaline seekers.\n• Cultural and Mythological Immersion: The trail passes through remote indigenous Marma villages and fields steep in rich tribal folklore and ancient mountain myths.\n• Escape from Crowds: Being highly remote, it offers complete isolation from commercial tourism, providing a peaceful and serene connection with nature.",
+      "bestTime": "Monsoon",
+      "bestTimeNote": "During this period, the waterfall is at its most powerful and breathtaking volume, while the river and trekking trails become safe and manageable to navigate.",
+      "hours": "Open throughout the day, as the Waterfall is a natural attraction without fixed opening or closing hours.",
+      "entryFee": "Free, because the Waterfall is a natural site without an official entrance ticket.",
+      "mainImage": "art:waterfall:0",
+      "images": [],
+      "video": "https://youtu.be/zbG0hPi7Ks4",
+      "latitude": 21.725434281696,
+      "longitude": 92.51471959461064,
+      "travelGuide": {
+        "bus": "",
+        "train": "",
+        "air": "",
+        "localTransport": "",
+        "distance": "• About 435 km total from Dhaka to the Shoingong Waterfall trailhead area (approx. 355 km from Dhaka to Bandarban town, 79 km from Bandarban to Thanchi, and a 1.5-hour boat ride upriver).",
+        "travelTime": "• 11 to 14 hours of cumulative transit time (7 to 8 hours by bus to Bandarban, 3 to 4 hours by jeep to Thanchi, and 1 to 1.5 hours by boat to the trail drop-off point).",
+        "route": "• Dhaka (Sayedabad/Fakirapool) → Chattogram-Cox's Bazar Highway → Bandarban Town → Thanchi Mountain Highway (via Chimbuk-Lushai Para) → Sangu River Route (via Tindu to Bagher Mukh).",
+        "instructions": "• Register your group at the Thanchi Army Camp and police station, keep 5 to 8 photocopies of your National ID (NID) ready for multiple security checkpoints, and hire a mandatory registered local guide before heading out."
+      },
+      "nearbyAttractions": [],
+      "safetyTips": [
+        "• Wear high-traction trekking shoes to navigate slippery boulders, completely avoid the trail during heavy rain due to rapid, life-threatening flash flood risks, and pack all electronics into waterproof dry bags since you will face a total mobile network blackout."
+      ],
+      "createdAt": "2026-10-02T13:19:34.774Z",
+      "updatedAt": "2026-10-02T13:19:34.774Z"
     }
   ],
   "removed": []
