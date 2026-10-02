@@ -1057,7 +1057,7 @@
 
   /* >>> ADMIN_MANAGED_START (do not edit by hand; written by the admin panel) */
   EB.ADMIN_DATA = {
-  "rev": 17,
+  "rev": 18,
   "added": [
     {
       "id": "spot_021",
@@ -1158,11 +1158,13 @@
       "bestTimeNote": "During this period, the waterfall is at its most powerful and breathtaking volume, while the river and trekking trails become safe and manageable to navigate.",
       "hours": "Open throughout the day, as the Waterfall is a natural attraction without fixed opening or closing hours.",
       "entryFee": "Free, because the Waterfall is a natural site without an official entrance ticket.",
-      "mainImage": "art:waterfall:0",
-      "images": [],
+      "mainImage": "https://i.ibb.co.com/gM5rVfSs/Shoingong-Waterfall-1.jpg",
+      "images": [
+        "https://i.ibb.co.com/9kFR5jpm/soigong-jhorna-bandarban-02.webp"
+      ],
       "video": "https://youtu.be/zbG0hPi7Ks4",
-      "latitude": 21.725434281696,
-      "longitude": 92.51471959461064,
+      "latitude": 21.72543,
+      "longitude": 92.51472,
       "travelGuide": {
         "bus": "",
         "train": "",
@@ -1178,7 +1180,7 @@
         "• Wear high-traction trekking shoes to navigate slippery boulders, completely avoid the trail during heavy rain due to rapid, life-threatening flash flood risks, and pack all electronics into waterproof dry bags since you will face a total mobile network blackout."
       ],
       "createdAt": "2026-10-02T13:19:34.774Z",
-      "updatedAt": "2026-10-02T13:19:34.774Z"
+      "updatedAt": "2026-10-02T13:25:17.224Z"
     }
   ],
   "removed": []
